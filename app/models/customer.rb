@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :shippings, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :items, thorough: :cart_items
+  has_many :items, through: :cart_items
   has_many :cart_items
 
 
