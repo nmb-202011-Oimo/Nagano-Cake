@@ -1,0 +1,7 @@
+<div class="row">
+    <h2>商品新規登録</h2>
+    <%= form_with model:@item, url:admin_items_path, method: :post, local:true do |f| %>
+    <%= render "form_item" %>
+    <%= f.submit "新規登録" %>
+    <% end %>
+</diva
