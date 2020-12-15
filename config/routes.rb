@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get "orders/complete" => "orders#complete"
     resources :shippings, except: [:new, :show]
 
-    root to "homes#top"
+    root to: "homes#top"
     get 'home/about' => 'homes#about'
   end
 
