@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    sessions:      'devise/admins/sessions',
+    passwords:     'devise/admins/passwords',
+    registrations: 'deviseadmins/registrations'
   }
   devise_for :customers, controllers: {
     sessions:      'devise/customers/sessions',
@@ -21,9 +21,7 @@ Rails.application.routes.draw do
     resource :homes, only: [:top]
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
-    
-    
-  
+
   end
 
   scope module: :public do
