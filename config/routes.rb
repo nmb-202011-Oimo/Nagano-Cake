@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :homes, only: [:top, :about]
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] 
     resource :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"

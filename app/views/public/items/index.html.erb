@@ -1,0 +1,20 @@
+
+<%# カテゴリー検索画面の部分テンプレート%>
+<%= render "itmens/category", locals: {categories: @categories} %>
+
+<%# カテゴリーに対応した、商品一覧の題名の作成%>
+<h1><%= @categories.name %>一覧</h1>
+ <%# カテゴリー商品の取得件数 %>
+ <p>全<%= @items.count %>件</p>
+ 
+ <%# 商品をeach文で回す%>
+ <% @items.each do |item| %>
+ <%# 商品画像 %>
+ <%= attchment_image_tag item, :image format: "jpg", size: "60x60" %>
+ <%# 商品名 %>
+ <%= item.name %>
+ <%# 商品価格 %>
+ <%= item.price %>
+ <% end %>
+ 
+ 
