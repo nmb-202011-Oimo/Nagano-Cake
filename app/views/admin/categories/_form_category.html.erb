@@ -1,7 +1,7 @@
-<%= form_with model:@category, url:admin_categories_path, local:true do |f| %>
+<%= form_with model:category, url:admin_categories_path, local:true do |f| %>
 <%= f.label :"カテゴリー" %>
 <%= f.text_field :name %>
-<%= f.radio_button :is_active, "有効" %>有効
-<%= f.radio_button :is_active, "無効" %>無効
+<%= f.radio_button :is_active, "有効",{:checked => true} %>有効
+<%= f.radio_button :is_active, "無効", {:checked => false} %>無効
 <%= f.submit "追加", class: "btn btn-info" %>
 <% end %>
