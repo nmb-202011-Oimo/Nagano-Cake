@@ -2,7 +2,7 @@
   <div class="row">
     <div>
       <h4>登録情報編集</h4>
-        <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+        <%= form_with model: @customer, url: edit_customer_registration_path, id: 'customer', class: 'customer', local: true do |f| %>
         <%= render "devise/customers/shared/error_messages", resource: resource %>
 
         <table>
@@ -62,7 +62,7 @@
         </div>
       <% end %>
 
-      <div><%= link_to "退会する", customers_unsucribe_path %></div>
+      <div><%= link_to "退会する", customers_unsucribe_path(current_customer.id) %></div>
 
     </div>
   </div>

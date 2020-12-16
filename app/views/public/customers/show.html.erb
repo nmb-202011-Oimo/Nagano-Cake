@@ -8,10 +8,10 @@
           <tr>
             <td>登録情報</td>
             <td>
-              <%= link_to "編集する", edit_customer_path, class: "btn btn-info col-xs-10 col-xs-offset-1" %>
+              <%= link_to "編集する", edit_customers_path, class: "btn btn-info col-xs-10 col-xs-offset-1" %>
             </td>
             <td>
-              <%= link_to "パスワードを変更する", _path, class: "btn btn-info col-xs-10 col-xs-offset-1" %>
+              <%= link_to "パスワードを変更する", edit_customer_passward_path, class: "btn btn-info col-xs-10 col-xs-offset-1" %>
             </td>
           </tr>
         </thead>
@@ -49,7 +49,7 @@
         </div>
         <div>
           <p>注文履歴</p>
-          <p><%= link_to "一覧を見る", orders(customer.id) %></p>
+          <p><%= link_to "一覧を見る", orders_path(customer.id) %></p>
         </div>
       </div>
 
