@@ -1,3 +1,6 @@
+<%= form_with model:@item, url:admin_items_path, local:true do |f| %>
+    
+   
 <div class="form-group">
     <%= f.label :"商品名" %>
     <%= f.text_field :name %>
@@ -18,3 +21,5 @@
     <%= f.label :"販売ステータス" %>
     <%= f.select :is_active, [['販売中', true], ['売切れ', false]], prompt: "-- 選択してください --"  %>
 </div>
+<%= f.submit "新規登録" %>
+<% end %>
