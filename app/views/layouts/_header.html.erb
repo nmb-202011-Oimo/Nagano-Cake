@@ -12,10 +12,10 @@
         <!--会員がログインしたとき-->
             <% if customer_signed_in? %>
             <li>
-                ようこそ、<%= family_name(current_user) %>さん！
+                
             </li>
             <li>
-                <%= link_to "マイページ", customers_path(current_user) %>
+                <%= link_to "マイページ", customers_path(current_customer) %>
             </li>
              <li>
                 <%= link_to "商品一覧", items_path %>
@@ -24,7 +24,7 @@
                 <%= link_to "カート", cart_items_path %>
             </li>
              <li>
-                <%= link_to "ログアウト", destroy_customer_sesstion_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
             </li>
 
             <!--管理人がログインしたとき-->

@@ -15,14 +15,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, except: [:destroy]
+       get 'top' => 'items#top'
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
     resource :homes, only: [:top]
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
     
-    root to: "homes#top"
-    get 'home/about' => 'homes#about'
+    
+  
   end
 
   scope module: :public do
