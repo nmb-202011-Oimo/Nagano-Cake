@@ -1,0 +1,29 @@
+<h3>注文情報入力画面</h1>
+
+<%= form_with model: @order, local: true do |f|  %>   <%# <=商品注文入力画面作成　%>
+<strong>支払方法</storng>
+<%= form.radio_button :payment , "0" %>クレジットカード <%#　<=0,1はenumで決めた数字を代入 Modelに記載あり%>
+<%= form.radio_button :payment , "1" %>銀行振込
+
+<string>お届け先</string>
+<%= f.radio_button :address_option, 0, checked: "checked" %>ご自身の住所<%# <=自分の住所選択時は0と数値をおく%>
+
+<%= current_customer.shippng.zipcode %>  
+<%= current_customer.shippng.address %>
+<%= current_customer.shipping.name %>
+
+<%= f.raido_butoon :address_option, 1 %>登録先住所から選択 <%# <=　登録済み住所は1と数値をおく%>
+<%= f.collection_select :zipcode, :address, :name, current_customer.shipping, :id, :zipcode, :address, :name %>  
+
+<%= f.radio_button :address_option, 2 %>新しいお届け先 <%# <=新規作成は2と数値をおく%>
+ 
+<%= f.label :zipcode, "郵便番号（ハイフン無し)" %>  
+<%= f.text_field :zipcode %>  
+
+<%= f.label :address, "住所" %>  
+<%= f.text_field :address %>
+
+<%= f.label :name, "宛名" %>
+<%= f.text_field :name %>
+
+<%= link_to "確認画面へ進む", orders_confirm_path %>
