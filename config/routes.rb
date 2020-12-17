@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
-    resources :items, except: [:destroy]
+    resources :items, only: [:index,:new,:create,:show,:edit,:update,]
        get 'top' => 'items#top'
+    
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
     resource :homes, only: [:top]

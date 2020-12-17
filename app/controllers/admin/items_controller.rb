@@ -10,9 +10,9 @@ class Admin::ItemsController < ApplicationController
     end
     
     def create
-        @item = Item.new
+        @item = Item.new(item_params)
         if @item.save
-            redirect_to admin_items_path(@item.id)
+            redirect_to admin_items_path
         else 
             render :new
         end
@@ -24,20 +24,26 @@ class Admin::ItemsController < ApplicationController
     
     
     def show
+        @item = Item.find(params[:id])
     end
     
     def edit
+        @item = Item.find(params[:id])
     end
     
     def update
-    
+        if @item.update(item_params)
+            redirect_to admin_item_path(@item.id), notice: "successfully updated item!"
+        else
+            render :edit
+        end
     end
     
     
      private
     # ストロングパラメータ
     def item_params
-        params.require(:item).permit(:name, :introduction, :category, :price)
+        params.require(:item).permit(:name, :introduction, :category_id, :price, :is_active)
     end
     
 end
