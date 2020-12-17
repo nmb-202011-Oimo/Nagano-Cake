@@ -29,9 +29,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     #resouceだとurlが複数形になるため  resource => resources
     resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
-    get "customers/unsubscribe" => "customers#unsubscribe", as: 'confirm_unsubscribe'
-    patch "customers/withdraw" => "homes#withdraw", as: 'withdraw_customer'
-    put ':id/withdraw/:email' => 'customers#withdraw'
+    get "unsubscribe/:email" => "customers#unsubscribe", as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:email' => "customers#withdraw", as: 'withdraw_customer'
+    put 'withdraw/:email' => 'customers#withdraw'
     resources :cart_items, except: [:new, :show, :edit]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     resources :orders, except: [:destroy, :edit, :update]
