@@ -18,7 +18,16 @@ class Devise::Customers::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def reject_customer
+    customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if customer
+      if @customer.deleted_password?(params[:customer][:password]) && !@customer.is_deleted
+        redirect_to new_customer_session_path
+      end
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

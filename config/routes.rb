@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions:      'devise/admins/sessions',
     passwords:     'devise/admins/passwords',
-    registrations: 'deviseadmins/registrations'
+    registrations: 'devise/admins/registrations'
   }
   devise_for :customers, controllers: {
     sessions:      'devise/customers/sessions',
@@ -27,9 +27,11 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :homes, only: [:top, :about]
     resources :items, only: [:index, :show]
-    resource :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    patch "customers/withdraw" => "customers#withdraw"
+    #resouceだとurlが複数形になるため  resource => resources
+    resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
+    get "customers/unsubscribe" => "customers#unsubscribe", as: 'confirm_unsubscribe'
+    patch "customers/withdraw" => "homes#withdraw", as: 'withdraw_customer'
+    put ':id/withdraw/:email' => 'customers#withdraw'
     resources :cart_items, except: [:new, :show, :edit]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     resources :orders, except: [:destroy, :edit, :update]
