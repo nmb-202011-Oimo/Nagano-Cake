@@ -8,9 +8,9 @@
 <string>お届け先</string>
 <%= f.radio_button :address_option, 0, checked: "checked" %>ご自身の住所<%# <=自分の住所選択時は0と数値をおく%>
 
-<%= current_customer.shippng.zipcode %>  
-<%= current_customer.shippng.address %>
-<%= current_customer.shipping.name %>
+<%= current_customer.zipcode %>  
+<%= current_customer.address %>
+<%= current_customer.family_name + current_customer.first_name %>
 
 <%= f.raido_butoon :address_option, 1 %>登録先住所から選択 <%# <=　登録済み住所は1と数値をおく%>
 <%= f.collection_select :zipcode, :address, :name, current_customer.shipping, :id, :zipcode, :address, :name %>  

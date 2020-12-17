@@ -4,8 +4,8 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
 
-enum payment:{
-  bank: 0,
-  credit: 1
+enum payment:{  #<=遠い未来で日本語化をします（今は仮定の日本語）
+  銀行振込: 0,
+  クレジットカード: 1
 } 
 end
