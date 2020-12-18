@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   
   #ユーザーに紐づいたカート内商品全表示
   def index
-    @cart_items = current_user.cart_items
+    @cart_items = current_customer.cart_items
   end
   
    # 商品詳細画面から、「カートに入れる」を押した時のアクション
