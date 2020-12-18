@@ -6,16 +6,16 @@
 <%= form.radio_button :payment , "1" %>銀行振込
 
 <string>お届け先</string>
-<%= f.radio_button :address_option, 0, checked: "checked" %>ご自身の住所<%# <=自分の住所選択時は0と数値をおく%>
+<%= f.radio_button :address_option, "0", checked: "checked" %>ご自身の住所<%# <=自分の住所選択時は0と数値をおく ここら辺は不安%>
 
 <%= current_customer.zipcode %>  
 <%= current_customer.address %>
 <%= current_customer.family_name + current_customer.first_name %>
 
-<%= f.raido_butoon :address_option, 1 %>登録先住所から選択 <%# <=　登録済み住所は1と数値をおく%>
+<%= f.raido_butoon :address_option, "1" %>登録先住所から選択 <%# <=　登録済み住所は1と数値をおく　ここら辺は不安%>
 <%= f.collection_select :zipcode, :address, :name, current_customer.shipping, :id, :zipcode, :address, :name %>  
 
-<%= f.radio_button :address_option, 2 %>新しいお届け先 <%# <=新規作成は2と数値をおく%>
+<%= f.radio_button :address_option, "2" %>新しいお届け先 <%# <=新規作成は2と数値をおく　ここら辺は不安%>
  
 <%= f.label :zipcode, "郵便番号（ハイフン無し)" %>  
 <%= f.text_field :zipcode %>  
