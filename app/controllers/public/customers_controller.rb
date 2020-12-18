@@ -19,17 +19,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find(params[:email])
+    @customer = Customer.find_by(name: params[:email])
   end
 
   def withdraw
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by(name: params[:email])
     #is_deletedカラムにフラグを立てる(defaultはfalse)
-    @customer.update(is_deleted: true)
-    #ログアウトさせる
-    # reset_seession
-    flash[:natice] = "ありがとうございました。またのご利用をお待ちしております。"
-    redirect_to root_path
+    if @customer.update(is_deleted: true)
+      #ログアウトさせる
+      # reset_seession
+      flash[:natice] = "ありがとうございました。またのご利用をお待ちしております。"
+      redirect_to root_path
+    else
+      render :unsubscribe
+    end
   end
 
   # def ensure_correct_customer
