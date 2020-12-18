@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 # ログイン時に遷移するpathを設定
     def after_sign_in_path_for(resource)
         if customer_signed_in?
-            customer_path(resource)
+            customers_path(resource)
         else
             admin_top_path
         end
