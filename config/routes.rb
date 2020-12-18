@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items, except: [:destroy]
        get 'top' => 'items#top'
-      
-    
+
+
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
     resource :homes, only: [:top]
@@ -31,11 +31,13 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     #resouceだとurlが複数形になるため  resource => resources
     resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
-    get "unsubscribe/:email" => "customers#unsubscribe", as: 'confirm_unsubscribe'
-    patch ':id/withdraw/:email' => "customers#withdraw", as: 'withdraw_customer'
-    put 'withdraw/:email' => 'customers#withdraw'
+    get "customer/:id/unsubscribe" => "customers#unsubscribe", as: 'customer_unsubscribe'
+    # patch "customers/withdraw" => "customers#withdraw"
+    patch 'customer/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     resources :cart_items, except: [:new, :show, :edit]
-    delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    #   colection do
+    #   end
+    # end
     resources :orders, except: [:destroy, :edit, :update]
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"

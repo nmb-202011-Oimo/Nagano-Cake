@@ -3,6 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+
   end
 
   def edit
@@ -19,19 +20,19 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(name: params[:email])
+    @customer = Customer.find(params[:id])
   end
 
   def withdraw
-    @customer = Customer.find_by(name: params[:email])
+    @customer = Customer.find(params[:id])
     #is_deletedカラムにフラグを立てる(defaultはfalse)
     if @customer.update(is_deleted: true)
       #ログアウトさせる
-      # reset_seession
+      reset_session
       flash[:natice] = "ありがとうございました。またのご利用をお待ちしております。"
       redirect_to root_path
-    else
-      render :unsubscribe
+    # else
+    #   render :unsubscribe
     end
   end
 
