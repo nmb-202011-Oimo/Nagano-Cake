@@ -8,7 +8,7 @@
 
 Admin.create!(
    email: 'test@test.com',
-   encrypted_password: 'testtest'
+   password: 'testte'
 )
 
 Customer.create!(
@@ -17,7 +17,7 @@ Customer.create!(
    kana_family_name: "タナカ",
    kana_first_name: "ヒデカズ",
    email: "nagano@cake.com",
-   encrypted_password: "123456",
+   password: "123456",
    zipcode: "0000000",
    address: "大阪府箕面市小野原東",
    phone_number: "12345678901",
