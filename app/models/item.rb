@@ -7,5 +7,7 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_details
   has_many :cart_items
   attachment :image
+  
+  validates :name, :introduction, :category_id, :price, :is_active, presence: true
 
 end

@@ -1,6 +1,7 @@
 <div class='container'>
     <div class='row'>
         <h2>カテゴリー一覧・追加</h2>
+        <%= render "layouts/error_messages", model: @category %>
         <%= render "form_category", category:@category %>
         
         <table class="table">
