@@ -4,7 +4,10 @@ class CartItem < ApplicationRecord
   belongs_to :item
 
 def total_price #<=小計を求める,こいつが動いてくれるかわからない
-		(item.price * 1.1) * quantity
+  tax_price * quantity.to_i
 end
-
+ 
+ def tax_price
+     item.price * 1.1
+ end
 end

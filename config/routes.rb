@@ -29,11 +29,15 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :homes, only: [:top, :about]
     resources :items, only: [:index, :show] 
+    get "items/search" => "items#search"   #<=サーチアクション
     resource :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
-    resources :cart_items, except: [:new, :show, :edit]
-    delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :cart_items, except: [:new, :show, :edit] do
+    collection do    #<=追加cart_item
+    delete "all_destroy" 
+    end
+    end
     resources :orders, except: [:destroy, :edit, :update]
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
