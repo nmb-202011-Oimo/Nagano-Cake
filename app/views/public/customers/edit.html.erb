@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h4>登録情報編集</h4>
+        <%= form_with model: @customer, url: edit_customer_registration_path, id: 'customer', class: 'customer', local: true do |f| %>
+        <!--%= render "devise/customers/shared/error_messages", resource: resource %>-->
+
+        <table>
+          <tr>
+            <td>
+              <div>名前</div>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.label "(姓)" %>
+                <%= f.text_field :family_name, autofocus: true %>
+              </div>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.label "(名)" %>
+                <%= f.text_field :first_name, autofocus: true %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div>フリガナ</div>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.label "(セイ)" %>
+                <%= f.text_field :kana_family_name, autofocus: true %>
+              </div>
+            </td>
+            <td>
+              <div class="field">
+                <%= f.label "(メイ)" %>
+                <%= f.text_field :kana_first_name, autofocus: true %>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="field">
+          <%= f.label "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label "郵便番号(ハイフンなし)" %>
+          <%= f.text_field :zipcode, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label "住所" %>
+          <%= f.text_field :address, autofocus: true %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "編集内容を保存する" %>
+        </div>
+      <% end %>
+
+      <div><%= link_to "退会する", confirm_unsubscribe_path(@customer.id) %></div>
+
+    </div>
+  </div>
+</div>
