@@ -1,5 +1,7 @@
 <%= form_with model: item, url: admin_items_path, local: true do |f| %>
     
+
+<%= f.attachment_field :image %>
    
 <div class="form-group">
     <%= f.label :"商品名" %>

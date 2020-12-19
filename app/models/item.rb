@@ -6,6 +6,6 @@ class Item < ApplicationRecord
   # order_detailsも中間テーブルだと思ったので、新規で追加しました
   has_many :orders, through: :order_details
   has_many :cart_items
-
+  attachment :image
 
 end

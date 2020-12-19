@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
         <h2>商品詳細</h2>
+            <p><%= attachment_image_tag @item, :image, size: "100x100", format: 'jpeg' %></p>
 
-
-            <P>商品名<%= @item.name %></P>
-            <P>商品説明<%= @item.introduction %></P>
-            <p>カテゴリー<%= @item.category.name %></p>
-            <p>税込価格（税抜価格）<%= (@item.price) *1.10 %>(<%= @item.price %>)円</p>
+            <P>商品名　<%= @item.name %></P>
+            <P>商品説明　<%= @item.introduction %></P>
+            <p>カテゴリー　<%= @item.category.name %></p>
+            <p>税込価格（税抜価格）　<%= number_to_currency(1.1*@item.price, unit: "￥", strip_insignificant_zeros: true) %> (<%= @item.price %>)円</p>
             <p>販売ステータス 
                 <% if @item.is_active == true %>
                 <td>販売中</td>

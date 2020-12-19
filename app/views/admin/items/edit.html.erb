@@ -2,7 +2,7 @@
     <div class='row'>
         <h2>商品編集</h2>
         <%= form_with model: @item, url: admin_item_path, method: :put, local: true do |f| %>
-    
+        <%= f.attachment_field :image %>
    
         <div class="form-group">
             <%= f.label :"商品名" %>

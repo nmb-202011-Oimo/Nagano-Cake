@@ -12,15 +12,13 @@
                 </tr>
             </thead>
             <tbody>
-                <% @categories.each do |category| %>
+                <% @categories.each do |category| %> 
                 <tr>
-                    <td><%= category.name %></td>
                     <% if category.is_active == true %>
-                        <td>有効</td>
-                    <% elsif category.is_active == false %>
-                        <td>無効</td>
-                    <% end %>
+                    <td><%= category.name %></td>
+                    <td>有効</td>
                     <td><p><%= link_to "編集する", edit_admin_category_path(category.id), class: "btn btn-info" %></p></td>
+                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
