@@ -28,16 +28,19 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :homes, only: [:top, :about]
-    resources :items, only: [:index, :show]
-    #resouceだとurlが複数形になるため  resource => resources
+    
+    resources :items, only: [:index, :show] 
+    get "items/search" => "items#search"   #<=サーチアクション
     resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
     get "customer/:id/unsubscribe" => "customers#unsubscribe", as: 'customer_unsubscribe'
     # patch "customers/withdraw" => "customers#withdraw"
     patch 'customer/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
-    resources :cart_items, except: [:new, :show, :edit]
-    #   colection do
-    #   end
-    # end
+    resources :cart_items, except: [:new, :show, :edit] do
+      collection do    #<=追加cart_item
+        delete "all_destroy" 
+      end
+    end
+
     resources :orders, except: [:destroy, :edit, :update]
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
