@@ -1,4 +1,18 @@
-<h3>ジャンル検索</h3>
-<% categories.each do |category| %>
-  <%= link_to category.name, items_search_path %>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <h3>ジャンル検索</h3>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <% categories.each do |category| %>
+          <%= link_to category.name, search_item_path(id: category.id) %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

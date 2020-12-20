@@ -28,9 +28,12 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :homes, only: [:top, :about]
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
     #resouceだとurlが複数形になるため  resource => resources
-    get "items/search" => "items#search"   #<=サーチアクション
+      member do
+        get "search" => "items#search"   #<=サーチアクション
+      end
+    end
     resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
     get "customer/:id/unsubscribe" => "customers#unsubscribe", as: 'customer_unsubscribe'
     # patch "customers/withdraw" => "customers#withdraw"
