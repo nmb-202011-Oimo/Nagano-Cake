@@ -1,0 +1,46 @@
+<h1>ショッピングカート</h1>
+
+<p><%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sum = 0 %>
+    <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= number_to_currency(cart_item.item.price, unit: "￥", strip_insignificant_zeros: true) %></td>
+       <%= form_with model: cart_item, local:true do |f| %>
+       <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+       <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <td><%= f.text_field :quantity, value: cart_item.quantity  %><%= f.submit "更新" %></td>
+      <% end %>
+      <td><%= number_to_currency(cart_item.subtotal_price, unit: "￥", strip_insignificant_zeros: true) %></td>
+      <td><%=link_to "削除する", cart_item_path(cart_item.id), class: "btn btn-danger", method: :delete,"data-confirm" => "削除しますか？" %></td>
+    </tr>
+    <% @sum += cart_item.subtotal_price %>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>合計金額</td>
+      <td><%= number_to_currency(@sum, unit: "￥", strip_insignificant_zeros: true) %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div>
+<%= link_to "情報入力画面へ進む", new_order_path %>
+</div>

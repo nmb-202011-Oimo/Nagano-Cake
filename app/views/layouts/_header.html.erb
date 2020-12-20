@@ -12,10 +12,10 @@
         <!--会員がログインしたとき-->
             <% if customer_signed_in? %>
             <li>
-                
+
             </li>
             <li>
-                <%= link_to "マイページ", customers_path(current_customer) %>
+                <%= link_to "マイページ", customer_path(current_customer) %>
             </li>
              <li>
                 <%= link_to "商品一覧", items_path %>
@@ -45,10 +45,10 @@
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
             <% else %>
-            
+
             <!--会員も管理人もログインしてないとき-->
             <li>
-                <%= link_to "About", home_about_path %> 
+                <%= link_to "About", home_about_path %>
             </li>
             <li>
                 <%= link_to "商品一覧", items_path %>
