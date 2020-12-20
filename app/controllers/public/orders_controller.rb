@@ -36,7 +36,14 @@ class Public::OrdersController < ApplicationController
          end
         current_customer.cart_items.destroy_all
      end
+     newshipping = Shipping.find_by(zipcode: @order.zipcode)
+     if newshipping == nil
+       shipping = Shipping.new(customer_id: current_customer.id, name: @order.name, zipcode: @order.zipcode, address: @order.address)
+       shipping.save
+       redirect_to complete_order_path(@order.id)
+     else
       redirect_to complete_order_path(@order.id)
+     end
    end
    
    def index
