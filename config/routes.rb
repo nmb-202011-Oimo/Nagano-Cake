@@ -39,17 +39,21 @@ Rails.application.routes.draw do
     patch 'customer/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     resources :cart_items, except: [:new, :show, :edit] do
       collection do    #<=追加cart_item
-        delete "all_destroy"
+
+        delete "all_destroy" 
       end
     end
-    resources :orders, except: [:destroy, :edit, :update]
+
+    resources :orders, except: [:destroy, :edit, :update] do
+    member do
+    get "complete"
+    end
+    end
+
     post "orders/confirm" => "orders#confirm"
-    get "orders/complete" => "orders#complete"
     resources :shippings, except: [:new, :show]
 
     root to: "homes#top"
     get 'home/about' => 'homes#about'
   end
-
-
 end
