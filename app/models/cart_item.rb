@@ -3,7 +3,8 @@ class CartItem < ApplicationRecord
   belongs_to :customer
   belongs_to :item
 
-def total_price #<=小計を求める,こいつが動いてくれるかわからない
+
+def subtotal_price #<=小計を求める,こいつが動いてくれるかわからない
   tax_price * quantity.to_i
 end
  
