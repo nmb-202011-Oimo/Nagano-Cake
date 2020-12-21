@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customers_path(@customer.id), notice: "Updated"
+      redirect_to customer_path(@customer.id), notice: "Updated"
     else
       render :edit
     end

@@ -2,7 +2,7 @@
   <div class="row">
     <div>
       <h4>登録情報編集</h4>
-        <%= form_with model: @customer, url: edit_customer_registration_path, id: 'customer', class: 'customer', local: true do |f| %>
+        <%= form_with model: @customer, local: true do |f| %>
         <!--%= render "devise/customers/shared/error_messages", resource: resource %>-->
 
         <table>
@@ -55,6 +55,11 @@
         <div class="field">
           <%= f.label "住所" %>
           <%= f.text_field :address, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label "電話番号" %>
+          <%= f.text_field :phone_number, autofocus: true %>
         </div>
 
         <div class="actions">
