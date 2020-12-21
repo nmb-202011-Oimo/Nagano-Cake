@@ -9,6 +9,12 @@ class Customer < ApplicationRecord
   has_many :items, through: :cart_items
   has_many :cart_items
 
-
-
+  
+  def Customer.search(search, customer_or_item)
+    if customer_or_item == "1"
+       Customer.where(['family_name LIKE ?', "%#{search}%"])
+    else
+       Customer.all
+    end
+  end
 end

@@ -1,0 +1,12 @@
+ <div class="input-group">
+  <%= form_with url: admin_search_path, method: :get, local:true do |f| %>
+    <%= f.select :option, [["customer", "1"],["item","2"]] %>
+    <%= f.text_field :search %>
+    <span class="input-group-btn">
+    <%= f.submit 'Search' %>
+    </span>
+    <% end %>
+    </div>
+    
+    
+    

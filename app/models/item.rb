@@ -9,5 +9,13 @@ class Item < ApplicationRecord
   attachment :image
   
   validates :name, :introduction, :category_id, :price, :is_active, presence: true
+  
+  def Item.search(search, customer_or_item)
+    if customer_or_item == "2"
+    Item.where(['name LIKE ?', "%#{search}%"])
+    else
+    Item.all
+    end
+  end
 
 end

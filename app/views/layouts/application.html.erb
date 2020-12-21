@@ -4,17 +4,22 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://kit.fontawesome.com/*******.js" crossorigin="anonymous"></script>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/31bd3b6efb.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header class="shadow-sm">
+  <body class="d-flex flex-column vh-100">
+    <header class="text-white pt-1 pb-1">
       <%= render "layouts/header" %> 
     </header>
-    
+   
     <%= yield %>
+  
+    <footer class="text-white">
+    <p>© All rights reserved by NaganoCake</p>
+    </footer>
   </body>
 </html>

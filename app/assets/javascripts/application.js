@@ -11,6 +11,11 @@
 // about supported directives.
 //
 
+//bootstrapを読み込むために下３行を追加 
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

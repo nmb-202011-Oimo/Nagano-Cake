@@ -1,6 +1,8 @@
 <div class='container'>
-    <div class='row'>
+  
         <h2><%= @customer.family_name %>     <%= @customer.first_name %>  さんの会員詳細</h2>
+        <div class='row'>
+        <div class="col-md-8">
         <div class='field'>
             <p>顧客ID         <%= @customer.id %></p>
             <% if @customer.is_deleted == true %>
@@ -28,7 +30,8 @@
             <p>メールアドレス <%= @customer.email %></p>
         </div>
         
-        <%= link_to "編集する", edit_admin_customer_path %>
-        <%= link_to "注文履歴一覧をみる", admin_orders_path %>
+        <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "注文履歴一覧をみる", admin_orders_path, class: "btn btn-outline-secondary" %>
+        </div>
     </div>
 </div>
