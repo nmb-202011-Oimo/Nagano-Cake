@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items, except: [:destroy]
       get 'top' => 'items#top'
-      
     
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
@@ -29,15 +28,24 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :homes, only: [:top, :about]
-    resources :items, only: [:index, :show]
-    resource :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    patch "customers/withdraw" => "customers#withdraw"
-    resources :cart_items, except: [:new, :show, :edit]
-    delete "cart_items/destroy_all" => "cart_items#destroy_all"
-    resources :orders, except: [:destroy, :edit, :update]
+    get "items/search" => "items#search"   #<=サーチアクション
+    resources :items, only: [:index, :show] 
+    resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
+    get "customer/:id/unsubscribe" => "customers#unsubscribe", as: 'customer_unsubscribe'
+    # patch "customers/withdraw" => "customers#withdraw"
+    patch 'customer/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
+    resources :cart_items, except: [:new, :show, :edit] do
+      collection do    #<=追加cart_item
+        delete "all_destroy" 
+      end
+    end
+
+    resources :orders, except: [:destroy, :edit, :update] do
+    member do
+    get "complete"
+    end
+    end
     post "orders/confirm" => "orders#confirm"
-    get "orders/complete" => "orders#complete"
     resources :shippings, except: [:new, :show]
 
     root to: "homes#top"

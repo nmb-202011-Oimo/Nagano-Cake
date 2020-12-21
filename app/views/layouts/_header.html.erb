@@ -5,6 +5,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <!--管理人がログインしたとき、管理人専用ページに飛べるリンク-->
+
             <% if admin_signed_in? %>
             <%= link_to "NaganoCake", admin_top_path, class: 'nav-link text-white' %>
             <% else %>

@@ -1,0 +1,46 @@
+<h1>注文履歴詳細</h1>
+
+<strong>注文</strong>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>注文日</td>
+      <td><%= l @order.created_at %></td>
+      <td>配送先</td>
+      <td><%= @order.zipcode %></br>
+          <%= @order.address %></br>
+          <%= @order.name %>
+      </td>
+      <td><%= @order.payment %></td>
+      <td><%= @order.status %></td>
+    </tr>
+  </tbody>
+ </table>
+ 
+ <strong>注文内容</strong>
+ <table>
+   <thead>
+     <tr>
+       <th>商品</th>
+       <th>単価(税込)</th>
+       <th>個数</th>
+       <th>小計</th>
+      </tr>
+    </teaad>
+    <tbody>
+      <tr>
+        <% @order.order_details.each do |order_detail| %>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.price %></td>
+        <td><%= order_detail.quantity %></td>
+        <td><%=number_to_currency(order_detail.total_price, strip_insignificant_zeros: true)  %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
