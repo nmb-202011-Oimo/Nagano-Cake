@@ -1,4 +1,8 @@
-
+ <% if @cart_item.errors.any? %>
+ <% @cart_item.errors.full_messages.each do |message| %>
+ <%= message %>
+ <% end %>
+ <% end %>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-10 mx-auto">
@@ -19,7 +23,7 @@
   <tbody>
     <% @sum = 0 %>
     <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
-
+    
     <tr>
       <td><%= cart_item.item.name %></td>
       <td><%= number_to_currency(cart_item.tax_price, strip_insignificant_zeros: true) %></td>

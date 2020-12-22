@@ -9,7 +9,7 @@ class Item < ApplicationRecord
 
   attachment :image
   
-  validates :name, presence: true, uniquness: true
+  #validates :name, presence: true, uniquness: true
   validates :introduction, :category_id, :price, :is_active, presence: true
   
 #   admin側の検索機能（ヘッダー部分）
