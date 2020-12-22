@@ -9,6 +9,9 @@ enum product_status:{
   "製作中": 2,
   "制作完了": 3
 }
+
+
+
 def total_price
   price * quantity
 end

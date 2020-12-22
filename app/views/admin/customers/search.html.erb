@@ -1,5 +1,7 @@
+
 <div class='container'>
     <div class='row'>
+      <% if @customer_or_item == "1" %>
         <h2>会員一覧</h2>
           <table class="table">
             <thead>
@@ -27,5 +29,42 @@
                 <% end %>
             </tbody>
         </table>
+
+    <% elsif @customer_or_item == "2" %>
+    
+     <h2>商品一覧</h2>
+ 
+ <table class="table">
+        <thead>
+          <tr class='table-name'>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to admin_item_path(item.id) do %>
+                  <%= item.name %>
+                  <% end %></td>
+              <td><%= item.price %></td>
+              <td><%= item.category.name %></td>
+              <% if item.is_active == true %>
+                <td>販売中</td>
+                <% elsif item.is_active == false %>
+                <td>売切れ</td>
+                <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    
+  
+<% else %>
+<% end %>
     </div>
 </div>

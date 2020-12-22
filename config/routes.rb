@@ -15,11 +15,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, except: [:destroy]
-       get 'top' => 'items#top'
-
-
+      get 'top' => 'items#top'
+    
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
+      get "search" => "customers#search"
     resource :homes, only: [:top]
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]

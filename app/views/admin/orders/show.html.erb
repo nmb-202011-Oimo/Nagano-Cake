@@ -1,0 +1,74 @@
+<%= flash[:notice] %>
+<div class='container'>
+    <h2>注文履歴詳細</h2>
+    <div class='row'>
+        <div class="col-md-8">
+            <div class='field'>購入者　　　
+            <%= @order.customer.family_name %> <%= @order.customer.first_name %>
+            </div>
+            <div class='field'>配送先　　
+            <%= @order.address %>　
+            </div>
+            <div class='field'>支払方法　
+            <%= @order.payment == 0 ? "銀行振込" : "クレジットカード" %>
+            </div>
+            <div class='field'>注文ステータス
+            <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+            <%= f.select :status, Order.statuses.keys, class: "status" %>
+            <%= f.submit "更新", class: "btn btn-outline-secondary" %>
+            <% end %>
+            </div>
+        </div>
+        
+        <table class='table'>
+            <thead>
+                <tr class='table-name'>
+                    <th>商品名</th>
+                    <th>単価（税込）</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                    <th>製作ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @order_details.each do |order_detail| %>
+                <tr>
+                    <th><%= order_detail.item.name %></th>
+                    <th><%= order_detail.price %></th>
+                    <th><%= order_detail.quantity %></th>
+                    <th><%= (order_detail.price) * (order_detail.quantity) %></th>
+                    <th><%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
+                    
+                        <%= f.select :product_status, OrderDetail.product_statuses.keys, class: "status" %>
+                        <%= f.submit "更新", class: "btn btn-outline-secondary" %>
+                        <% end %></th>
+                </tr>
+                <% end %>
+                
+            </tbody>
+            
+        </table>
+        <table>
+            <tr>
+                <th>商品合計</th>
+                <% @sum = 0 %>
+                <% @order.order_details.each do |order_detail| %>
+                <% @sum += order_detail.total_price %>
+                <% end %>
+                <td><%= @sum %>円</td>
+            </tr>
+            <tr>
+                <th>送料</th>
+                <td><%= @order.shipping_fee %>円</td>               
+            </tr>
+            <tr>
+                <th>請求金額合計</th>
+                <td><%= @order.total_price %>円</td>               
+            </tr>
+            
+        </table>
+        
+        
+        
+    </div>
+</div>
