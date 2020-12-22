@@ -6,10 +6,38 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.header-logo {
+    width: 100%;
+    height: auto;
+}
+
+.main-logo {
+    text-align: center;
+}
+
 .category {
-    
+
 }
 
 .text-ct {
     color: #696969;
+}
+
+.item-random {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-left: 0;
+}
+
+.top-bg {
+    width: 100%;
+    height: 492px;
+    background-image: url("cake-5.jpg");
+    background-size: contain;
+}
+
+.top-text {
+    text-align: center;
+    padding: 100px;
 }

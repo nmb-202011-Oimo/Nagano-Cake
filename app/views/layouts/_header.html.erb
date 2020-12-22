@@ -2,9 +2,13 @@
     <nav class="navbar navbar-expand-lg navbar-left">
         <!--管理人がログインしたとき、管理人専用ページに飛べるリンク-->
         <% if admin_signed_in? %>
-        <%= link_to "NaganoCake", admin_top_path %>
+            <%= link_to admin_top_path do %>
+              <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
+            <% end %>
         <% else %>
-        <%= link_to "NaganoCake", root_path, class:"nav-link text-black" %>
+            <%= link_to root_path, class:"nav-link text-black" do %>
+              <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
+            <% end %>
         <% end %>
     </nav>
     <nav>
@@ -15,7 +19,7 @@
 
             </li>
             <li>
-                <%= link_to "マイページ", customer_path(current_customer) %>
+                <%= link_to "マイページ", customer_path(current_customer.id) %>
             </li>
              <li>
                 <%= link_to "商品一覧", items_path %>
