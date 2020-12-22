@@ -2,7 +2,7 @@
 <%= render "public/items/category", {categories: @categories} %>
 
 <%# 商品画像 %>
-<%= attachment_image_tag @item, :image_id, format: "jpg", size: "80x80" %>
+<%= attachment_image_tag @item, :image, format: "jpg", size: "80x80" %>
 <%# 商品名 %>
 <%= @item.name %>
 <%# 商品価格(税込) ←多分税込価格の計算式は間違えてる%>

@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class='container'>
     <div class='row'>
         <h2>注文履歴一覧</h2>
@@ -12,12 +13,21 @@
                 </thead>
                 <tbody>
                      <% @orders.each do |order| %>
+                     
                     <tr>
-                        <%= link_to admin_order_path(order) do %>
-                        <td><%= order.created_at %></td>
+                        <td><%= link_to admin_order_path(order.id) do %>
+                        <%= order.created_at %>
+                        <% end %></td>
+                
+                        <td><%= order.customer.family_name + order.customer.first_name %></td>
+                        
+                        <!--orderの子要素のorder_detailのquantityカラム呼び出し-->
+                        <% @sum= 0  %>
+                        <% order.order_details.each do |order_detail| %>
+                        <% @sum += order_detail.quantity %>
                         <% end %>
-                        <td><%= order.customer.family_name %></td>
-                        <td><%= order.order_details.quantity %></td>
+                           <td><%= @sum %></td>
+                        
                         <td><%= order.status %></td>
                     </tr>
                     <% end %>
