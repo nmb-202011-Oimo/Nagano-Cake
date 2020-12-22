@@ -7,7 +7,19 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_details
   has_many :cart_items
 
-  validates :name, presence: true, uniqueness: true
-  validates :price, presence: true
-  validates :introduction, presence: true
+  attachment :image
+  
+  validates :name, presence: true, uniquness: true
+  validates :introduction, :category_id, :price, :is_active, presence: true
+  
+#   admin側の検索機能（ヘッダー部分）
+  def Item.search(search, customer_or_item)
+    if customer_or_item == "2"
+    Item.where(['name LIKE ?', "%#{search}%"])
+    else
+    Item.all
+    end
+  end
+
+
 end

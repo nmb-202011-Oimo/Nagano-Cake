@@ -15,11 +15,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, except: [:destroy]
-       get 'top' => 'items#top'
-
-
+      get 'top' => 'items#top'
+    
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
+      get "search" => "customers#search"
     resource :homes, only: [:top]
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
@@ -29,20 +29,18 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :homes, only: [:top, :about]
     resources :items, only: [:index, :show] do
-    #resouceだとurlが複数形になるため  resource => resources
       member do
         get "search" => "items#search"   #<=サーチアクション
       end
     end
-
+    #resouceだとurlが複数形になるため  resource => resources
     resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
     get "customer/:id/unsubscribe" => "customers#unsubscribe", as: 'customer_unsubscribe'
-    # patch "customers/withdraw" => "customers#withdraw"
     patch 'customer/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     resources :cart_items, except: [:new, :show, :edit] do
       collection do    #<=追加cart_item
 
-        delete "all_destroy" 
+        delete "all_destroy"
       end
     end
 

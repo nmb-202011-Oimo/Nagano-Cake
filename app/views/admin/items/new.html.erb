@@ -1,6 +1,11 @@
-<div class="row">
+<div class='container'>
     <h2>商品新規登録</h2>
+    
+        
+      
+    <%= render "layouts/error_messages", model: @item %>
 
     <%= render "form_item", item: @item %>
+    
   
 </div>
