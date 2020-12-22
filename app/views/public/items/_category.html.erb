@@ -1,4 +1,22 @@
-<h3>ジャンル検索</h3>
-<% categories.each do |category| %>
-<%= link_to category.name, items_search_path %>
-<% end %>
+
+<table class="table category">
+  <thead class="table-success">
+    <tr>
+      <th>
+        <h5>ジャンル検索</h5>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% categories.each do |category| %>
+      <tr>
+        <td>
+          <%= link_to search_item_path(id: category.id) do %>
+            <p class="text-ct"><%= category.name %></p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

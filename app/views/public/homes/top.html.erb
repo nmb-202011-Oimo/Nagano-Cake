@@ -1,16 +1,36 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div>
-
-      <h4>
+    <div class="col-sm-3">
+      <%= render 'public/items/category', categories: @categories %>
+    </div>
+    <div class="col-lg-9">
+      <div class="top-bg">
+        <p class="main-logo"><%= image_tag 'logo-2.png', :size =>'300x150' %></p>
+      </div>
+      <h4 class="top-text text-center">
         ようこそ、NaganoCakeへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
       </h4>
-      <h3>オススメ商品</h3>
+      <h3>
+        オススメ商品
+      </h3>
       <!-- each文 -->
-
+      <div class="item-random">
+        <% @random.each do |item| %>
+          <div class="col-sm-4">
+            <%= link_to item_path(item.id) do %>
+              <p><%= attachment_image_tag item, :image_id, size:'100x100', format: 'jpg', fallback: "no_image.jpg" %></p>
+              <p><%= item.name %></p>
+            <% end %>
+            <p>￥ <%= item.price %></p>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to "もっと見る", items_path %>
+      </div>
     </div>
   </div>
 </div>

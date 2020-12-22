@@ -28,15 +28,19 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resource :homes, only: [:top, :about]
-    get "items/search" => "items#search"   #<=サーチアクション
-    resources :items, only: [:index, :show] 
+    resources :items, only: [:index, :show] do
+      member do
+        get "search" => "items#search"   #<=サーチアクション
+      end
+    end
+    #resouceだとurlが複数形になるため  resource => resources
     resources :customers, only: [:show, :edit, :update]      # <= current_userで:id不要？
     get "customer/:id/unsubscribe" => "customers#unsubscribe", as: 'customer_unsubscribe'
-    # patch "customers/withdraw" => "customers#withdraw"
     patch 'customer/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     resources :cart_items, except: [:new, :show, :edit] do
       collection do    #<=追加cart_item
-        delete "all_destroy" 
+
+        delete "all_destroy"
       end
     end
 
@@ -45,12 +49,11 @@ Rails.application.routes.draw do
     get "complete"
     end
     end
+
     post "orders/confirm" => "orders#confirm"
     resources :shippings, except: [:new, :show]
 
     root to: "homes#top"
     get 'home/about' => 'homes#about'
   end
-
-
 end
