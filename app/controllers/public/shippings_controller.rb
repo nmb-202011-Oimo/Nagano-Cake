@@ -3,7 +3,6 @@ class Public::ShippingsController < ApplicationController
   def index
     @shipping = Shipping.new
     # @customer = Customer.find(params[:id])
-    @shippings = current_customer.shippings
   end
 
   def create
