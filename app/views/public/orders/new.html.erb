@@ -1,16 +1,20 @@
+ <% if @order.errors.any? %>
+      <% @order.errors.full_messages.each do |message| %>
+        <%= message %>
+    <% end %>
+  <% end %>
 <h3>注文情報入力画面</h3>
 
 <%= form_with url: "/orders/confirm", local: true do |f|  %>   <%# <=商品注文入力画面作成%>
-<strong>支払方法</storng>
-<%= f.radio_button :payment , "銀行振込" %>銀行振込 <%#<=0,1はenumで決めた数字を代入 Modelに記載あり%>
-<%= f.radio_button :payment , "クレジットカード" %>クレジットカード
+<%= f.label :payment, "支払方法" %> 
+<%= f.radio_button :payment , "銀行振込", checked: "checked" %>銀行振込</br> <%#<=0,1はenumで決めた数字を代入 Modelに記載あり%>
+<%= f.radio_button :payment , "クレジットカード" %>クレジットカード</br>
 
-<string>お届け先</string>
+<%= f.label :address_option, "お届け先" %>
 <%= f.radio_button :address_option, "0", checked: "checked" %>ご自身の住所<%#<=自分の住所選択時は0と数値をおく %>
-
-<%= current_customer.zipcode %>  
-<%= current_customer.address %>
-<%= current_customer.family_name + current_customer.first_name %>
+<%= current_customer.zipcode %></br>
+<%= current_customer.address %></br>
+<%= current_customer.family_name + current_customer.first_name %></br>
 
 <%= f.radio_button :address_option, "1" %>登録先住所から選択 <%#<=登録済み住所は1と数値をおく ここら辺は不安%>
 <%= f.collection_select :address_id,  current_customer.shippings.all, :id, :shipping_address %>  <%# 第一引数　パラムズの値、第二引数、参照する値、第三引数、送る値、第四引数、表示する値%>

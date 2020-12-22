@@ -3,6 +3,9 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
 
+validates :zipcode, presence: true
+validates :address, presence: true
+validates :name, presence: true
 
 
 enum payment:{  #<=遠い未来で日本語化をします（今は仮定の日本語）

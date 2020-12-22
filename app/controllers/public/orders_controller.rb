@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   
   def new
+    @order = Order.new
   end
  
  def confirm
@@ -33,8 +34,11 @@ class Public::OrdersController < ApplicationController
            @order_detail  = OrderDetail.new({
             order_id: @order.id, item_id: item.item_id, quantity: item.quantity, price: item.tax_price})
            @order_detail.save
+           current_customer.cart_items.destroy_all
          end
-        current_customer.cart_items.destroy_all
+     else
+         render :new
+         return
      end
      newshipping = Shipping.find_by(zipcode: @order.zipcode)
      if newshipping == nil
@@ -53,6 +57,9 @@ class Public::OrdersController < ApplicationController
    
    def show
      @order = Order.find(params[:id])
+     if @order.customer_id != current_customer.id
+       redirect_to new_order_path
+     end
    end
    
    private
