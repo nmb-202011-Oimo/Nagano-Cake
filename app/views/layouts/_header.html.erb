@@ -20,6 +20,8 @@
         <% end %>
     </nav>
     <nav>
+
+
     
                 <ul class="navbar-nav ml-auto">
                 <!--会員がログインしたとき-->
@@ -37,6 +39,7 @@
                 <li class="nav-item">
                     <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
                 </li>
+
 
                 <!--管理人がログインしたとき-->
                 <% elsif admin_signed_in? %>

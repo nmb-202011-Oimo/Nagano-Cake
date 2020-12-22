@@ -18,8 +18,12 @@ class Public::CartItemsController < ApplicationController
   
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.update(cart_item_params) #<=カートアイテム内の個数変更quantity: params[:quantity].to_i
-    redirect_to cart_items_path
+    if@cart_item.update(cart_item_params) #<=カートアイテム内の個数変更quantity: params[:quantity].to_i
+      redirect_to cart_items_path
+    else
+      @cart_items = current_customer.cart_items
+      render :index
+    end
   end
   
  def destroy
