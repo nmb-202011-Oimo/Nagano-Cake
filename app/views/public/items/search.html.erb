@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div>
     <%# カテゴリー検索画面の部分テンプレート%>
@@ -14,7 +14,9 @@
        <% @items.each do |item| %>
          <%# 商品画像 %>
          <%= link_to item_path(item.id) do %>
-           <%= attachment_image_tag item, :image, format: "jpg", size: "60x60" %>
+
+           <%= attachment_image_tag item, :image, format: "jpg", size: "60x60", fallback: "no_image.jpg" %>
+
            <%# 商品名 %>
            <%= item.name %>
          <% end %>

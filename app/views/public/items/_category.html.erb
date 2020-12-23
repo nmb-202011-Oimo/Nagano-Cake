@@ -8,6 +8,13 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>
+        <%= link_to items_path do %>
+          <p class="text-ct">全商品</p>
+        <% end %>
+      </td>
+    </tr>
     <% categories.each do |category| %>
       <tr>
         <td>

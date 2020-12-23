@@ -20,11 +20,11 @@ class Customer < ApplicationRecord
   end
 
 
-  validates :family_name, presence: true, uniqueness: true
-  validates :first_name, presence: true, uniqueness: true
+  validates :family_name, presence: true
+  validates :first_name, presence: true
   VALID_KANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
-  validates :kana_family_name, presence: true, uniqueness: true, format: { with: VALID_KANA_REGEX }
-  validates :kana_first_name, presence: true, uniqueness: true, format: { with: VALID_KANA_REGEX }
+  validates :kana_family_name, presence: true, format: { with: VALID_KANA_REGEX }
+  validates :kana_first_name, presence: true,  format: { with: VALID_KANA_REGEX }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :zipcode, presence: true
