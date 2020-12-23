@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
         if customer_signed_in?
             root_path
         else
-            admin_top_path
+            # topページHomeに変更しました
+            admin_path  
         end
     end
 

@@ -10,7 +10,7 @@
 
 
         <% if admin_signed_in? %>
-            <%= link_to admin_top_path do %>
+            <%= link_to admin_path do %>
               <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
             <% end %>
         <% else %>
@@ -18,10 +18,6 @@
               <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
             <% end %>
         <% end %>
-    </nav>
-    <nav>
-
-
     
                 <ul class="navbar-nav ml-auto">
                 <!--会員がログインしたとき-->
@@ -80,5 +76,6 @@
                 </li>
                 <% end %>
             </ul>
-        </div>
+            </div>
     </nav>
+</header>

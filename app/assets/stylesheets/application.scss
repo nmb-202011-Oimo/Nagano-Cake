@@ -30,10 +30,23 @@
 
 header {
     background-color: #8FBC8F;
+    margin: 0;
 }
 
 .container {
   height: 100%;
+}
+
+body {
+  margin: 0;
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+.main {
+  margin: 0;
+  
 }
 
 footer{
@@ -43,8 +56,10 @@ footer{
     text-align: center;
     margin-top: auto;
     padding-top: 20px;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
 
 .navbar {
-  list-style: none
-
+  list-style: none;
 }
