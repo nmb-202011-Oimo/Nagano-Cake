@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 //  bootstrapを読み込ませるために下３行を
 
 @import "bootstrap";
@@ -27,9 +27,27 @@
   box-sizing: border-box;
 }
 
+body {
+  width: 100%;
+  margin: 0;
+}
 
 header {
-    background-color: #8FBC8F;
+  width: 100%;
+  background-color: #8FBC8F;
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.notice {
+  color: green;
 }
 
 .container {
@@ -37,14 +55,43 @@ header {
 }
 
 footer{
-    width: 100%;
-    height: 50px;
-    background-color: #8FBC8F;
-    text-align: center;
-    margin-top: auto;
-    padding-top: 20px;
+  width: 100%;
+  height: auto;
+  background-color: #8FBC8F;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-top: 20px;
+}
 
 .navbar {
-  list-style: none
+  list-style: none;
+  padding: 10px 0 0s;
+}
 
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+// .blank {
+//   margin: 0;
+// }
+
+.category {
+  padding: 0;
+}
+
+.mypage {
+  text-align: center;
+  padding: 20px;
 }
