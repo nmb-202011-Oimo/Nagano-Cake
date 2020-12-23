@@ -1,84 +1,85 @@
 
-<nav class="navbar navbar-expand-lg navbar-left">
-    <!--<div class="container">-->
-        <div class="navbar-brand">
-            <!--管理人がログインしたとき、管理人専用ページに飛べるリンク-->
-            <% if admin_signed_in? %>
-                <%= link_to admin_top_path do %>
-                  <p class="logo-head"><%= image_tag 'logo-2.png', :size => '180x90' %></p>
-                <% end %>
-            <% else %>
-                <%= link_to root_path, class:"nav-link text-black" do %>
-                  <p class="logo-head"><%= image_tag 'logo-2.png', :size => '180x90' %></p>
-                <% end %>
+
+<header class="header">
+
+    <nav class="navbar navbar-expand-lg navbar-left">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <!--管理人がログインしたとき、管理人専用ページに飛べるリンク-->
+
+
+        <% if admin_signed_in? %>
+            <%= link_to admin_path do %>
+              <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
             <% end %>
-        </div>
-        <!--<div>-->
-            <!-- #ハンバーガーメニューボタン　-->
-            <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-            <!--    <span class="navbar-toggler-icon"></span>-->
-            <!--</button>-->
-            <!--<div class="collapse navbars-collapse" id= "navbarNavDropdown">-->
+        <% else %>
+            <%= link_to root_path, class:"nav-link text-black" do %>
+              <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
+            <% end %>
+        <% end %>
+    
                 <ul class="navbar-nav ml-auto">
-                    <!--会員がログインしたとき-->
-                    <% if customer_signed_in? %>
-                        <li class="nav-item">
-                            ようこそ<%= current_customer.family_name %> <%= current_customer.first_name %>さん！
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "マイページ", customer_path(current_customer), class: 'fas fa-user nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "商品一覧", items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "カート", cart_items_path, class: 'fas fa-shopping-cart nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
-                        </li>
+                <!--会員がログインしたとき-->
+                <% if customer_signed_in? %>
+                <p>ようこそ<%= current_customer.family_name %> <%= current_customer.first_name %>さん！</p>
+                <li class="nav-item">
+                    <%= link_to "マイページ", customer_path(current_customer), class: 'fas fa-user nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "商品一覧", items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "カート", cart_items_path, class: 'fas fa-shopping-cart nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
+                </li>
+
+                  
 
 
-                    <!--管理人がログインしたとき-->
-                    <% elsif admin_signed_in? %>
-                        <li class="nav-item">
-                            <%= link_to "商品一覧", admin_items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "会員一覧", admin_customers_path, class: 'fas fa-users nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "注文一覧", admin_orders_path, class: 'fas fa-store nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "カテゴリ一覧", admin_categories_path, class: 'fas fa-certificate nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
-                        </li>
+                <!--管理人がログインしたとき-->
+                <% elsif admin_signed_in? %>
+                <li class="nav-item">
+                    <%= link_to "商品一覧", admin_items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "会員一覧", admin_customers_path, class: 'fas fa-users nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "注文一覧", admin_orders_path, class: 'fas fa-store nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "カテゴリ一覧", admin_categories_path, class: 'fas fa-certificate nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
+                </li>
+            
+                <!--検索フォームの呼び出し-->
+                <span>
+                <%= render "layouts/search" %>
+                </span>
+                <% else %>
+            
+                <!--会員も管理人もログインしてないとき-->
+                <li class="nav-item">
+                    <%= link_to "About", home_about_path, class: 'fas fa-info nav-link text-white' %> 
+                </li>
+                <li class="nav-item">
+                    <%= link_to "商品一覧", items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "新規登録", new_customer_registration_path, class: 'fas fa-user-plus nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "ログイン", new_customer_session_path, class: 'fas fa-sign-in-alt nav-link text-white' %>
+                </li>
+                <% end %>
+            </ul>
+            </div>
+    </nav>
+</header>
 
-                        <!--検索フォームの呼び出し-->
-                        <span>
-                        <%= render "layouts/search" %>
-                        </span>
-                    <% else %>
-
-                        <!--会員も管理人もログインしてないとき-->
-                        <li class="nav-item">
-                            <%= link_to "About", home_about_path, class: 'fas fa-info nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "商品一覧", items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "新規登録", new_customer_registration_path, class: 'fas fa-user-plus nav-link text-white' %>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "ログイン", new_customer_session_path, class: 'fas fa-sign-in-alt nav-link text-white' %>
-                        </li>
-                    <% end %>
-                </ul>
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-</nav>

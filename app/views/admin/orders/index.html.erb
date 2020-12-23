@@ -1,9 +1,12 @@
-<%= flash[:notice] %>
+<p id="notice"><%= notice %></p>
 <div class='container'>
-    <div class='row'>
-        <h2>注文履歴一覧</h2>
-            <table class='table'>
-                <thead>
+    <div class='row mt-5 ml-5'>
+        <h2 class="heading">注文履歴一覧</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 mx-auto mt-3">
+            <table class='table table-bordered'>
+                <thead class='thead-light'>
                     <tr class='table-name'>
                         <th>購入日時</th>
                         <th>購入者</th>
@@ -12,11 +15,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                     <% @orders.each do |order| %>
-                     
+                     <!--テーブルの中身-->
+                    <% @orders.each do |order| %>
                     <tr>
                         <td><%= link_to admin_order_path(order.id) do %>
-                        <%= order.created_at %>
+                        <%= order.created_at.strftime('%Y/%m/%d') %>
                         <% end %></td>
                 
                         <td><%= order.customer.family_name + order.customer.first_name %></td>
@@ -26,12 +29,13 @@
                         <% order.order_details.each do |order_detail| %>
                         <% @sum += order_detail.quantity %>
                         <% end %>
-                           <td><%= @sum %></td>
+                        <td><%= @sum %></td>
                         
                         <td><%= order.status %></td>
                     </tr>
                     <% end %>
                 </tbody>
             </table>
+        </div>
     </div>
 </div>

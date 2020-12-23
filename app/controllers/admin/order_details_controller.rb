@@ -2,17 +2,22 @@ class Admin::OrderDetailsController < ApplicationController
 before_action :authenticate_admin!
 
     def update 
-        @orders = Order.all
         @order_detail = OrderDetail.find(params[:id])
-        if @order_detail.update(order_detail_params)
+        @order = @order_detail.order
+        @order_detail.update(order_detail_params)
+        # 紐付く注文商品の製作ステータスが'一つでも製作中'になったら
             if @order_detail.product_status == "製作中"
-                @orders.update_all(status: "製作中" )
+                # 注文ステータスが製作中に自動更新
+                @order.update(status: 2 )
                 flash[:success] = "製作ステータスを変更しました"
-		        redirect_to admin_orders_path(@order_detail.order)
-		    end
-        else
-	        render "order/show"
-        end
+            else
+                # 紐付く注文商品の製作ステータスが'全部製作完了'になったら
+                if @order.order_details.where(product_status: 3).count == @order.order_details.count
+                    # 注文ステータスが発送準備中に自動更新
+                    @order.update(status: 3)
+                end
+            end
+		    redirect_to admin_orders_path(@order_detail.id)
     end
     
     private
