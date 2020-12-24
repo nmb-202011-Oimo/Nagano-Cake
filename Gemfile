@@ -74,3 +74,6 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'i18n_generators'
+
+# ページング機能追加
+gem 'kaminari'
