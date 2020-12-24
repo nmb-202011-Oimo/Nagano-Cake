@@ -16,6 +16,7 @@
         </thead>
         <tbody>
           <!--テーブルの中身-->
+    
           <% @items.each do |item| %>
             <tr>
               <td><%= item.id %></td>
@@ -23,7 +24,9 @@
                   <%= item.name %>
                   <% end %></td>
               <td><%= item.price %></td>
-              <td><%= item.category.name %></td>
+              
+              <td>
+                <%= item.category.name %></td>
               <% if item.is_active == true %>
                 <td>販売中</td>
                 <% elsif item.is_active == false %>

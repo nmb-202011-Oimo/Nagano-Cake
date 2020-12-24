@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <td><%= f.label :"カテゴリー" %></td>
-                <td><%= f.collection_select(:category_id, Category.all, :id, :name, prompt: "-- 選択してください--") %></td>
+                <td><%= f.collection_select(:category_id, Category.where(is_active: true), :id, :name, prompt: "-- 選択してください--") %></td>
             </tr>
             <tr>
                 <td><%= f.label :"税抜価格" %></td>
