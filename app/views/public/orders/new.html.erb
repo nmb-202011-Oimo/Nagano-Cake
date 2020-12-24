@@ -1,10 +1,18 @@
  <% if @order.errors.any? %>
       <% @order.errors.full_messages.each do |message| %>
+       <div class="row">
+          <div class="mx-auto text-danger">
         <%= message %>
+          </div>
+       </div>
     <% end %>
   <% end %>
  <div class="container px-5 px-sm-0">
-<h4>注文情報入力画面</h4>
+ <div class="row">
+   <div class="mx-auto">
+     <h4>注文情報入力画面</h4>
+   </div>
+ </div>
 
 <%= form_with url: "/orders/confirm", local: true do |f|  %>
 <strong><%= f.label :payment, "支払方法" %></br></strong>

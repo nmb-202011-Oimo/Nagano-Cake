@@ -16,7 +16,7 @@
     <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
     <tr>
       <td><%= cart_item.item.name %></td>
-      <td><%= number_to_currency(cart_item.item.price, strip_insignificant_zeros: true) %></td>
+      <td><%= number_to_currency(cart_item.tax_price, strip_insignificant_zeros: true) %></td>
       <td><%= cart_item.quantity  %></td>
       <td><%= number_to_currency(cart_item.subtotal_price, strip_insignificant_zeros: true) %></td>
     </tr>
@@ -70,7 +70,7 @@
 <%= f.hidden_field :name, :valie => @order.name %>
 
 <div class="row">
-  <div class="col-5 mx-auto">
+  <div class="col-5 mx-auto mb-1">
 <%= f.submit "購入を確定する", class:"btn btn-success btn-block" %>
   </div>
 </div>

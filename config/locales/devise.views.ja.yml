@@ -1,14 +1,21 @@
 ja:
   activerecord:
     attributes:
-      user:
+      customer:
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        family_name: "苗字"
+        kana_family_name: "カナ苗字"
+        kana_first_name: "カナ名前"
+        first_name: "名前" 
+        zipcode: "郵便番号"
+        address: "住所"
+        phone_number: "電話番号"
     models:
-      user: "ユーザ"
+      customer: "会員"
   devise:
     confirmations:
       new:

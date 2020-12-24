@@ -9,23 +9,6 @@ ja:
       name: 宛名
 ja:
   activerecord:
-    models:
-     cart_item:
     attributes:
      cart_item:
       quantity: 個数
-ja:
-  activerecord:
-    models:
-     customer:
-    attributes:
-     customer:
-     family_name: 苗字
-     first_name: 名前
-     kana_family_name: カナ
-     kana_first_name: カナ
-     email: メールアドレス
-     zipcode: 郵便番号
-     address: 住所
-     phone_number: 電話番号
-    
