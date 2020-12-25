@@ -1,7 +1,14 @@
 class Public::OrdersController < ApplicationController
-  
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
+    @cart_items = current_customer.cart_items
+    if @cart_items.present?
+      render :new
+    else
+     redirect_to cart_items_path
+    end
   end
  
  def confirm
@@ -31,19 +38,21 @@ class Public::OrdersController < ApplicationController
      @order = Order.new(order_params)
      if @order.save
          current_customer.cart_items.each do |item|
-           @order_detail  = OrderDetail.new({
+           @order_detail = OrderDetail.new({
             order_id: @order.id, item_id: item.item_id, quantity: item.quantity, price: item.tax_price})
            @order_detail.save
-           current_customer.cart_items.destroy_all
          end
      else
          render :new
          return
      end
-     newshipping = Shipping.find_by(zipcode: @order.zipcode)
+     current_customer.cart_items.destroy_all
+     shipping = current_customer.shippings
+     newshipping = shipping.find_by(zipcode: @order.zipcode)
      if newshipping == nil
        shipping = Shipping.new(customer_id: current_customer.id, name: @order.name, zipcode: @order.zipcode, address: @order.address)
        shipping.save
+       flash[:notice] = "住所が新規登録されました"
        redirect_to complete_order_path(@order.id)
      else
       redirect_to complete_order_path(@order.id)
@@ -57,6 +66,7 @@ class Public::OrdersController < ApplicationController
    
    def show
      @order = Order.find(params[:id])
+     @order_details =@order.order_details
      if @order.customer_id != current_customer.id
        redirect_to new_order_path
      end

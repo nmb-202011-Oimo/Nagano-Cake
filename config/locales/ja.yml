@@ -205,3 +205,15 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  activerecord:
+    models:
+     order: 注文
+    attributes:
+     order:
+      zipcode: 郵便番号
+      address: 住所
+      name: 宛名
+  activerecord:
+    attributes:
+     cart_item:
+      quantity: 個数 

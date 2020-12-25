@@ -1,8 +1,9 @@
 class Public::CartItemsController < ApplicationController
-  
+  before_action :authenticate_customer!
   #ユーザーに紐づいたカート内商品全表示
   def index
     @cart_items = current_customer.cart_items
+    @cart_item = CartItem.new
   end
   
    # 商品詳細画面から、「カートに入れる」を押した時のアクション
@@ -11,7 +12,8 @@ class Public::CartItemsController < ApplicationController
       @cart_item = CartItem.new(cart_item_params)  #<=がカート内商品を商品ID,ユーザーIDを追加
     end
     @cart_item.quantity += params[:quantity].to_i #<=show画面で設定した個数をカート内商品に追加
-    @cart_item.save   #<=カート内商品保存
+    @cart_item.save
+    flash[:notice] = "カートに保存されました"
     redirect_to cart_items_path #<=カート内商品一覧にリダイレクト
   end
   
@@ -19,6 +21,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if@cart_item.update(cart_item_params) #<=カートアイテム内の個数変更quantity: params[:quantity].to_i
+      flash[:notice] = "変更されました"
       redirect_to cart_items_path
     else
       @cart_items = current_customer.cart_items

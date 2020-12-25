@@ -1,10 +1,19 @@
-
+ <% if @cart_item.errors.any? %>
+ <% @cart_item.errors.full_messages.each do |message| %>
+ <div class="row">
+     <div class="mx-auto text-danger">
+       <%= message %>
+     </div>
+ </div>
+ <% end %>
+ <% end %>
 <div class="container px-5 px-sm-0">
   <div class="row">
+    <h4 class="ml-3">ショッピングカート</h4>
     <div class="col-10 mx-auto">
-<h4>ショッピングカート</h4>
 
-<p class="text-right"><%= link_to "カートを空にする", all_destroy_cart_items_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+<p class="text-right">
+ <%= link_to "カートを空にする", all_destroy_cart_items_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
 
 <table class="table table-bordered">
   <thead class="thead-light">
@@ -20,7 +29,7 @@
   <tbody>
     <% @sum = 0 %>
     <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
-
+    
     <tr>
       <td><%= attachment_image_tag cart_item.item, :image, format: "jpg", size: "80x80", fallback: "no_image.jpg" %></td>
       <td><%= cart_item.item.name %></td>
@@ -40,22 +49,28 @@
   </table>
   </div>
  </div>
-</div>
+
 
  <div class="row">
-   <div class="col-2 pull-right">
+     <div class="mx-auto">
+     <%= link_to "買い物を続ける", root_path, class:"btn btn-info" %>
+     </div>
+   <div class="col-4 mx-auto">
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td>合計金額</td>
+          <td "table-secondary">合計金額</td>
           <td><%= number_to_currency(@sum, strip_insignificant_zeros: true) %></td>
         </tr>
       </tbody>
     </table>
    </div>
-  </div>
-
-<%= link_to "買い物を続ける",items_path, class:"btn btn-info" %>
-<div>
-<%= link_to "情報入力画面へ進む", new_order_path, class:"btn btn-success" %>
+ </div>
+   <div class="row">
+     <div class="col-6 mx-auto mb-1">
+        <% if @cart_items.present? %>
+      <%= link_to "情報入力画面へ進む", new_order_path, class:"btn btn-success btn-block" %>
+        <% end %>
+    </div>
+   </div>
 </div>

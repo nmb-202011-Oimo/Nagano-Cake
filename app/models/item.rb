@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   has_many :cart_items
 
   attachment :image
-
+  
   validates :name, presence: true, uniqueness: true
   validates :introduction, :category_id, :price, :is_active, presence: true
 

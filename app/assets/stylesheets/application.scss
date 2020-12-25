@@ -75,6 +75,7 @@ body {
 }
 
 footer{
+
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
   width: 100%;
@@ -94,6 +95,7 @@ footer{
 .navbar-brand {
   margin: 0;
   padding: 0;
+
 }
 
 .nav-item {
