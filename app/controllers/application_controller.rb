@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 # ログイン時に遷移するpathを設定
     def after_sign_in_path_for(resource)
-            root_pat
+            root_path
     end
 
 # ログアウト後に遷移するpathを設定
