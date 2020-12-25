@@ -3,19 +3,18 @@
     <div class="category col-sm-2">
       <%= render 'public/items/category', categories: @categories %>
     </div>
-    <div class="col-sm-10" style="padding: 0;">
-      <div class="top-bg">
-        <span class="top-title">
-          ようこそ、NaganoCakeへ！
-        </span>
-        <!--<p class="main-logo">%= image_tag 'logo-1.png', :size =>'600x300' %></p>-->
+  
+    <div class="col-sm-10">
+      <div class="main-visual">
+        <%= image_tag 'top1.jpg', :size => '1200x300', :style => 'background-image' %>
       </div>
-      <p class="top-text">
-        このサイトは、ケーキ販売のECサイトになります。<br>
-         ※会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。<br>
-      </p>
-      <h3>
+      <h1 style="font-weight: bold; color:#696969; text-align:center">ようこそ、ながのCAKEへ！</h1>
+      <div class="main-visual-text" style="color:#696969; text-align:center">
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          ※会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。<br>
+      </div>
+      <h3 style="font-weight: bold; color:#696969">
         オススメ商品
       </h3>
       <!-- each文 -->
@@ -23,10 +22,10 @@
         <% @random.each do |item| %>
           <div class="col-sm-4">
             <%= link_to item_path(item.id) do %>
-              <p><%= attachment_image_tag item, :image, size:'180x180', format: 'jpg', fallback: "no_image.jpg" %></p>
-              <p><%= item.name %></p>
+              <p><%= attachment_image_tag item, :image, size:'250x250', format: 'jpg', fallback: "no_image.jpg" %></p>
+              <p class="text-ct"><%= item.name %></p>
             <% end %>
-            <p>￥ <%= item.price %></p>
+            <p class="text-ct">￥ <%= item.price %></p>
           </div>
         <% end %>
       </div>
