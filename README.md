@@ -1,6 +1,6 @@
 # ながのCAKE
 
-<img width="1440" alt="スクリーンショット 2020-12-26 1 24 16" src="https://user-images.githubusercontent.com/66649016/103139018-2ecfee00-471b-11eb-82dc-7d08150cf2b8.png">
+<img width="1433" alt="スクリーンショット 2020-12-26 1 41 17" src="https://user-images.githubusercontent.com/66649016/103139064-c9c8c800-471b-11eb-827f-91a186b39b58.png">
 
 
 
