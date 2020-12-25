@@ -8,6 +8,7 @@ class Admin::CategoriesController < ApplicationController
     
     def create
         @category = Category.new(category_params)
+        @categories = Category.all
         if @category.save
             flash[:notice] = "カテゴリーを追加しました"
             redirect_to admin_categories_path

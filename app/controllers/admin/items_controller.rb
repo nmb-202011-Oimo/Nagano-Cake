@@ -4,6 +4,7 @@ class Admin::ItemsController < ApplicationController
     
     def new
         @item = Item.new
+        @categories = Category.all
     end
     
     def create
@@ -11,12 +12,13 @@ class Admin::ItemsController < ApplicationController
         if @item.save
             redirect_to admin_items_path
         else 
+            @categories = Category.all
             render :new
         end
     end
     
     def index
-        @items = Item.all
+        @items = Item.all.page(params[:page])
     end
     
     
@@ -26,13 +28,15 @@ class Admin::ItemsController < ApplicationController
     
     def edit
         @item = Item.find(params[:id])
+        @categories = Category.all
     end
     
     def update
         @item = Item.find(params[:id])
         if @item.update(item_params)
-            redirect_to admin_item_path(@item.id), notice: "successfully updated item!"
+            redirect_to admin_item_path(@item.id), notice: "商品情報を変更しました!"
         else
+            @categories = Category.all
             render :edit
         end
     end
@@ -45,4 +49,3 @@ class Admin::ItemsController < ApplicationController
     end
     
 end
-

@@ -16,20 +16,25 @@
         </thead>
         <tbody>
           <!--テーブルの中身-->
+    
           <% @items.each do |item| %>
+          <% if item.category.is_active == true %>
             <tr>
               <td><%= item.id %></td>
               <td><%= link_to admin_item_path(item.id) do %>
                   <%= item.name %>
                   <% end %></td>
               <td><%= item.price %></td>
-              <td><%= item.category.name %></td>
+              
+              <td>
+                <%= item.category.name %></td>
               <% if item.is_active == true %>
                 <td>販売中</td>
                 <% elsif item.is_active == false %>
                 <td>売切れ</td>
                 <% end %>
             </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
@@ -37,6 +42,6 @@
   </div>
   <div class="text-right">
       <%= link_to "新商品追加はこちら", new_admin_item_path, class: "btn btn-secondary" %>
-    </div>
+      <%= paginate @items %>
   </div>
-</div>
+  </div>
