@@ -20,11 +20,11 @@ Rails.application.routes.draw do
     
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
-      get "search" => "customers#search"
-   
+    get "search" => "customers#search"
+    
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
-
+    
   end
 
   scope module: :public do

@@ -1,73 +1,107 @@
 <div class="container">
   <div class="row">
-    <div>
+    <div class="mypage-edit col-lg-12">
       <h4>登録情報編集</h4>
         <%= form_with model: @customer, local: true do |f| %>
         <!--%= render "devise/customers/shared/error_messages", resource: resource %>-->
 
-        <table>
-          <tr>
-            <td>
-              <div>名前</div>
-            </td>
-            <td>
-              <div class="field">
-                <%= f.label "(姓)" %>
-                <%= f.text_field :family_name, autofocus: true %>
-              </div>
-            </td>
-            <td>
-              <div class="field">
-                <%= f.label "(名)" %>
-                <%= f.text_field :first_name, autofocus: true %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div>フリガナ</div>
-            </td>
-            <td>
-              <div class="field">
-                <%= f.label "(セイ)" %>
-                <%= f.text_field :kana_family_name, autofocus: true %>
-              </div>
-            </td>
-            <td>
-              <div class="field">
-                <%= f.label "(メイ)" %>
-                <%= f.text_field :kana_first_name, autofocus: true %>
-              </div>
-            </td>
-          </tr>
-        </table>
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <th colspan="5"></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  名前
+                </td>
+                <td>
+                  <%= f.label "(姓)" %>
+                </td>
+                <td class="field">
+                  <%= f.text_field :family_name, autofocus: true %>
+                </td>
+                <td>
+                  <%= f.label "(名)" %>
+                </td>
+                <td class="field">
+                  <%= f.text_field :first_name, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  フリガナ
+                </td>
+                <td>
+                  <%= f.label "(セイ)" %>
+                </td>
+                <td class="field">
+                  <%= f.text_field :kana_family_name, autofocus: true %>
+                </td>
+                <td>
+                  <%= f.label "(メイ)" %>
+                </td>
+                <td class="field">
+                  <%= f.text_field :kana_first_name, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.label "メールアドレス" %>
+                </td>
+                <td></td>
+                <td class="field">
+                  <%= f.email_field :email, autofocus: true, size: 45 %>
+                </td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.label "郵便番号(ハイフンなし)" %>
+                </td>
+                <td></td>
+                <td class="field">
+                  <%= f.text_field :zipcode, autofocus: true %>
+                </td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.label "住所" %>
+                </td>
+                <td></td>
+                <td class="field">
+                  <%= f.text_field :address, autofocus: true, size: 45 %>
+                </td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td>
+                  <%= f.label "電話番号" %>
+                </td>
+                <td></td>
+                <td class="field">
+                  <%= f.text_field :phone_number, autofocus: true %>
+                </td>
+                <td colspan="2"></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <th class="edit-bt">
+                  <%= f.submit "編集内容を保存する", class: "btn btn-outline-success btn-lg" %>
+                </th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        <% end %>
 
-        <div class="field">
-          <%= f.label "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :zipcode, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label "住所" %>
-          <%= f.text_field :address, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label "電話番号" %>
-          <%= f.text_field :phone_number, autofocus: true %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "編集内容を保存する" %>
-        </div>
-      <% end %>
-
-      <div><%= link_to "退会する", customer_unsubscribe_path(current_customer.id) %></div>
+      <div class="unsub-link">
+        <%= link_to "退会画面", customer_unsubscribe_path(current_customer.id), class: "btn btn-outline-danger" %>
+      </div>
 
     </div>
   </div>

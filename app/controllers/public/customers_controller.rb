@@ -2,12 +2,12 @@ class Public::CustomersController < ApplicationController
   # before_action :ensure_correct_customer, only: [:edit, :update]
 
   def show
-    @customer = current_customer.id
+    @customer = Customer.find(params[:id])
 
   end
 
   def edit
-    @customer = current_customer.id
+    @customer = Customer.find(params[:id])
   end
 
   def update
