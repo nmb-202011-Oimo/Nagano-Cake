@@ -1,7 +1,17 @@
 <%= form_with model: category, url:admin_categories_path, local:true do |f| %>
-<%= f.label :"カテゴリー" %>
-<%= f.text_field :name, class: "form-control-sm" %>
-<%= f.radio_button :is_active, true %>有効
-<%= f.radio_button :is_active, false %>無効
-<%= f.submit "追加", class: "btn btn-outline-secondary" %>
+    <div class="col-lg-9 mx-auto">
+        <table class="table table-borderless">
+            <tr>
+                <td><%= f.label :"カテゴリー" %></td>
+                <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+                <td><%= f.radio_button :is_active, true %>有効
+                    <%= f.radio_button :is_active, false %>無効</td>
+            </tr>
+            <tr>
+                <td><%= f.submit "追加", class: "btn btn-secondary ml-3 mt-3" %></td>
+            </tr>
+        </table>
+    </div>
 <% end %>

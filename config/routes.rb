@@ -14,16 +14,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
+    # topページHomeに変更
+    get '/' => 'homes#top'
     resources :items, except: [:destroy]
-      get 'top' => 'items#top'
     
     resources :categories, except: [:destroy, :show, :new]
     resources :customers, except: [:destroy, :new, :create]
-      get "search" => "customers#search"
-    resource :homes, only: [:top]
+    get "search" => "customers#search"
+    
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
-
+    
   end
 
   scope module: :public do
