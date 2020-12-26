@@ -7,10 +7,12 @@
          </div>
     <% end %>
   <% end %>
- <div class="container">
- <div class="row">
-   <div class="mx-auto">
-     <h4>注文情報入力画面</h4>
+
+ <div class="container px-5 px-sm-0">
+   <div class="row">
+     <div class="mx-auto">
+       <h4>注文情報入力画面</h4>
+     </div>
    </div>
 
 
@@ -72,6 +74,13 @@
   <div class="col-6 mx-auto mb-1">
     <%= f.submit "確認画面へ進む", class:"btn btn-info btn-block" %>
      <% end %>
+
+
+      <div class= "row">
+        <div class="col-6 mx-auto mb-1"> <!-- , style="padding-bottom: 80px -->
+          <p class="order-btn"><%= f.submit "確認画面へ進む", class:"btn btn-secondary btn-block" %></p>
+      </div>
+    <% end %>
 
   </div>
 </div>
