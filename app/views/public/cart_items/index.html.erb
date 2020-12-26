@@ -8,14 +8,14 @@
  <% end %>
  <% end %>
 <div class="container">
-  <div class="row">
+  <div class="row" style="color:#696969">
     <h4 class="ml-3">ショッピングカート</h4>
     <div class="col-10 mx-auto">
 
 <p class="text-right">
  <%= link_to "カートを空にする", all_destroy_cart_items_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="color:#696969">
   <thead class="thead-light">
     <tr>
       <th></th>
@@ -59,7 +59,7 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td "table-secondary">合計金額</td>
+          <td "table-secondary" style="color:#696969">合計金額</td>
           <td><%= number_to_currency(@sum, strip_insignificant_zeros: true) %></td>
         </tr>
       </tbody>
