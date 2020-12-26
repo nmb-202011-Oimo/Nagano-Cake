@@ -7,6 +7,10 @@
 DMMWEBCAMP２ヶ月目にあるチーム開発プロジェクトで作成したECサイトです。  
 小さな洋菓子店の商品を通販するためのサイトを開発しました。  
 
+## URL
+
+<https://oimo-nagano-cake.herokuapp.com/>
+
 ## 使用言語
 
 ・HTML  
