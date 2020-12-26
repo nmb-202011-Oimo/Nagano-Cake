@@ -8,8 +8,14 @@
 
 Admin.create!(
    email: 'test@test.com',
+<<<<<<< HEAD
+   password: 'testte'
+)
+
+=======
    password: 'testtest',
 )
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Customer.create!(
    family_name: "田中",
    first_name: "英一",
@@ -21,18 +27,34 @@ Customer.create!(
    address: "大阪府箕面市小野原東",
    phone_number: "12345678901",
    )
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Category.create!(
    name: "ケーキ",
    is_active: true,
    )
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Category.create!(
    name: "チョコレート",
    is_active: true,
    )
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Category.create!(
    name: "クッキー",
    is_active: true,
    )
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Item.create!(
    category_id: 1,
    name: "ショートケーキ",
@@ -40,6 +62,10 @@ Item.create!(
    introduction: "いちごの入ったケーキです",
    image_id: nil,
    is_active: true,)
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Item.create!(
    category_id: 1,
    name: "チョコケーキ",
@@ -47,6 +73,10 @@ Item.create!(
    introduction: "チョコの入ったケーキです",
    image_id: nil,
    is_active: true,)
+<<<<<<< HEAD
+   
+=======
+>>>>>>> ea162616aee99125fccc63c409614533d0ab2e1f
 Item.create!(
    category_id: 1,
    name: "モンブランケーキ",
