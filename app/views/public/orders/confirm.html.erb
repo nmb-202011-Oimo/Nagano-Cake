@@ -2,77 +2,77 @@
   <h4>注文情報確認</h4>
   <div class="row">
     <div class="col-8">
-<table class="table table-bordered" style="color:#696969;">
-  <thead  class="thead-light">
-    <tr>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% sum = 0 %>
-    <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
-    <tr>
-      <td><%= cart_item.item.name %></td>
-      <td><%= number_to_currency(cart_item.tax_price, strip_insignificant_zeros: true) %></td>
-      <td><%= cart_item.quantity  %></td>
-      <td><%= number_to_currency(cart_item.subtotal_price, strip_insignificant_zeros: true) %></td>
-    </tr>
-    <% sum += cart_item.subtotal_price %>
-    <% end %>
-  </tbody>
-</table>
- </div>
- <div class="col-3">
-<table class="table table-bordered" style="color:#696969;">
-  <tbody>
-    <tr>
-      <td class="table-secondary">送料</td>
-      <td><%= @order.shipping_fee %></td>
-    </tr>
-    <tr>
-      <td class="table-secondary">商品合計</td>
-      <td><%= number_to_currency(sum, strip_insignificant_zeros: true) %></td>
-    </tr>
-    <tr>
-      <td class="table-secondary">請求金額</td>
-       <% @order.total_price = sum + @order.shipping_fee %>
-      <td><%= number_to_currency(@order.total_price, strip_insignificant_zeros: true) %></td>
-    </tr>
-  </tbody>
-</table>
- </div>
-</div>
-<div class="row ml-1">
- <strong>支払方法</strong>
-</div>
-<div class="ol-3 p-0 ml-5">
-  <%= @order.payment %>
-</div>
+      <table class="table table-bordered" style="color:#696969;">
+        <thead  class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sum = 0 %>
+          <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= number_to_currency(cart_item.tax_price, strip_insignificant_zeros: true) %></td>
+            <td><%= cart_item.quantity  %></td>
+            <td><%= number_to_currency(cart_item.subtotal_price, strip_insignificant_zeros: true) %></td>
+          </tr>
+          <% sum += cart_item.subtotal_price %>
+          <% end %>
+        </tbody>
+      </table>
+       </div>
+       <div class="col-3">
+      <table class="table table-bordered" style="color:#696969;">
+        <tbody>
+          <tr>
+            <td class="table-secondary">送料</td>
+            <td><%= @order.shipping_fee %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">商品合計</td>
+            <td><%= number_to_currency(sum, strip_insignificant_zeros: true) %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">請求金額</td>
+             <% @order.total_price = sum + @order.shipping_fee %>
+            <td><%= number_to_currency(@order.total_price, strip_insignificant_zeros: true) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row ml-1">
+   　<strong>支払方法</strong>
+  </div>
+  <div class="ol-3 p-0 ml-5">
+    <%= @order.payment %>
+  </div>
 
-<div class="row ml-1">
+  <div class="row ml-1">
     <strong>お届け先</strong>
-   <div class="col-7 p-0 mt-4">
-    〒<%= @order.zipcode %>
-    <%= @order.address %></br>
-    <%= @order.name %>
-   </div>
+    <div class="col-7 p-0 mt-4">
+      〒<%= @order.zipcode %>
+      <%= @order.address %></br>
+      <%= @order.name %>
+  　</div>
   </div>
-<%= form_with model: @order, local: true do |f| %>
-<%= f.hidden_field :customer_id, :value => current_customer.id %>
-<%= f.hidden_field :shipping_fee, :value => @order.shipping_fee %>
-<%= f.hidden_field :payment, :value => @order.payment %>
-<%= f.hidden_field :total_price, :value => @order.total_price %>
-<%= f.hidden_field :zipcode, :value => @order.zipcode %>
-<%= f.hidden_field :address, :value => @order.address %>
-<%= f.hidden_field :name, :valie => @order.name %>
+    <%= form_with model: @order, local: true do |f| %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.hidden_field :shipping_fee, :value => @order.shipping_fee %>
+    <%= f.hidden_field :payment, :value => @order.payment %>
+    <%= f.hidden_field :total_price, :value => @order.total_price %>
+    <%= f.hidden_field :zipcode, :value => @order.zipcode %>
+    <%= f.hidden_field :address, :value => @order.address %>
+    <%= f.hidden_field :name, :valie => @order.name %>
 
-<div class="row">
-  <div class="col-5 mx-auto mb-1">
-<%= f.submit "購入を確定する", class:"btn btn-success btn-block" %>
-  </div>
-</div>
-<% end %>
+    <div class="row">
+      <div class="col-5 mx-auto mb-1">
+        <%= f.submit "購入を確定する", class:"btn btn-success btn-block" %>
+      </div>
+    </div>
+    <% end %>
 </div>
