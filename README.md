@@ -1,25 +1,55 @@
-# README
+# ながのCAKE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img width="1430" alt="スクリーンショット 2020-12-26 1 46 00" src="https://user-images.githubusercontent.com/66649016/103139087-3348d680-471c-11eb-8993-b1fe75bf9ec3.png">
 
-Things you may want to cover:
+## アプリケーション概要
 
-* Ruby version
+DMMWEBCAMP２ヶ月目にあるチーム開発プロジェクトで作成したECサイトです。  
+小さな洋菓子店の商品を通販するためのサイトを開発しました。  
 
-* System dependencies
+## 使用言語
 
-* Configuration
+・HTML  
+・CSS(SCSS)  
+・JavaScript  
+・Ruby on Rails(5.2.4)  
 
-* Database creation
 
-* Database initialization
+## 使用gem
 
-* How to run the test suite
+・devise  
+・refile  
+・fontawesome  
+・kaminari  
+・jquery-rails  
+・bootstrap  
+・gem 'i18n_generators'  
+・gem 'devise-i18n'  
+・gem 'devise-i18n-views'  
 
-* Services (job queues, cache servers, search engines, etc.)
+## 機能一覧
 
-* Deployment instructions
+顧客  
+・ログイン・ログアウト  
+・商品一覧・詳細  
+・カート追加・編集・購入  
+・顧客情報編集  
+・退会  
+・配送先追加・編集  
+・注文履歴一覧・詳細  
 
-* ...
-hoge
+管理者  
+・ログイン・ログアウト  
+・注文履歴一覧・詳細  
+・顧客一覧・詳細  
+・商品一覧・詳細・編集  
+・カテゴリー設定
+
+
+## チームおいも メンバー
+
+お担当　おと  @corogit  
+い担当　いと  @74905  
+も担当　MinO @mnwhryk  
+　
+

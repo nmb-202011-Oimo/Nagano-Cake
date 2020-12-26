@@ -1,0 +1,9 @@
+<div class='container'>
+    <div class="row mt-5 ml-5"></div>
+        <h2 class="heading">商品新規登録</h2>
+    </div>
+    <!--エラーメッセージ呼び出し-->
+    <%= render "layouts/error_messages", model: @item %>
+    <!--新規登録フォーム呼び出し-->
+    <%= render "form_item", item: @item %>
+</div>
