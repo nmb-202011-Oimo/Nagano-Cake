@@ -27,10 +27,7 @@
   box-sizing: border-box;
 }
 
-body {
-  width: 100%;
-  margin: 0;
-}
+
 
 header {
   width: 100%;
@@ -42,12 +39,10 @@ header {
 
 .main {
   width: 100%;
-  margin: 0;
-  padding: 0;
+  padding-bottom: 70px; 
 }
 
 #notice {
-  margin: 0;
   padding-left: 50px;
   font-size: 20px;
   color: green;
@@ -62,6 +57,7 @@ header {
 }
 
 body {
+  height: 100%;
   margin: 0;
   min-height: 100vh;
   position: relative;/*←相対位置*/
@@ -70,10 +66,7 @@ body {
   padding: 0 0 1px 0;
 }
 
-.main {
-  margin: 0;
 
-}
 
 footer{
   position: absolute;/*←絶対位置*/
@@ -84,7 +77,7 @@ footer{
   text-align: center;
   margin-top: auto;
   margin-bottom: 0;
-  padding: 20px 0;
+  padding-top: 20px;
 }
 
 .navbar {
@@ -116,9 +109,7 @@ footer{
   text-align: center;
 }
 
-.category-thead {
-  background-color: #CC9966;
-}
+
 
 .mypage {
   text-align: center;
@@ -186,4 +177,3 @@ footer{
 .custpass-title {
   margin: 30px;
 }
-

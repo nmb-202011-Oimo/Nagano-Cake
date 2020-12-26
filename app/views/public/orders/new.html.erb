@@ -37,6 +37,7 @@
 <div class="ml-4">
    <%= f.radio_button :address_option, "1" %>登録先住所から選択</br>
 </div>
+</div>
 <div class= "row">
   <div class="col-9 ml-5 px-0">
     <%= f.collection_select :address_id, current_customer.shippings.all, :id, :shipping_address, {}, class: 'form-control' %></br>    <%# 第一引数　パラムズの値、第二引数、参照する値、第三引数、送る値、第四引数、表示する値%>
@@ -70,17 +71,15 @@
   </div>
 </div>
   
-<div class= "row">
-  <div class="col-6 mx-auto mb-1">
-    <%= f.submit "確認画面へ進む", class:"btn btn-info btn-block" %>
-     <% end %>
+
 
 
       <div class= "row">
-        <div class="col-6 mx-auto mb-1"> <!-- , style="padding-bottom: 80px -->
+        <div class="col-6 mx-auto mb-1" style="padding-bottom: 80px">
           <p class="order-btn"><%= f.submit "確認画面へ進む", class:"btn btn-secondary btn-block" %></p>
       </div>
     <% end %>
 
   </div>
+</div>
 </div>
