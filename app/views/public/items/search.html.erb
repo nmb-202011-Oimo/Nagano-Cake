@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2">
+        <%# カテゴリー検索画面の部分テンプレート%>
+        <%= render "public/items/category", categories: @categories %>
+    </div>
+    
+    <div class="col-sm-10">
+        <%# カテゴリーに対応した、商品一覧の題名の作成%>
+        <span class="item-title"><%= @category.name %>一覧</span>
+        <%# カテゴリー商品の取得件数 %>
+        <p class="item-count">全<%= @items.count %>件</p>
+
+        <div class="item-box">
+        <%# 商品をeach文で回す%>
+        <% @items.each do |item| %>
+          <div class="item-list">
+            <%= link_to item_path(item.id) do %>
+              <%# 商品画像 %>
+              <p class="item">
+                <%= attachment_image_tag item, :image, format: "jpg", size: "180x180", fallback: "no_image.jpg" %>
+              </p>
+              <%# 商品名 %>
+              <p class="item">
+                <p class="item-name"><%= item.name %></p>
+              </p>
+            <% end %>
+              <%# 商品価格 %>
+            <p class="item">
+              <p class="item-price">
+                <%= number_to_currency(item.price * 1.1, strip_insignificant_zeros: true) %>
+              </p>
+            </p>
+          </div>
+       <% end %>
+       </div>
+
+    </div>
+  </div>
+</div>

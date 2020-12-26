@@ -1,0 +1,189 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+//  bootstrapを読み込ませるために下３行を
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  background-color: #D2B48C	;
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#notice {
+  margin: 0;
+  padding-left: 50px;
+  font-size: 20px;
+  color: green;
+}
+
+.container {
+  height: 100%;
+}
+
+.logo-head{
+  margin: 10 auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+  padding: 0 0 1px 0;
+}
+
+.main {
+  margin: 0;
+
+}
+
+footer{
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+  width: 100%;
+  height: auto;
+  background-color: #D2B48C;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding: 20px 0;
+}
+
+.navbar {
+  list-style: none;
+  padding: 10px 0 0s;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+
+}
+
+.nav-item {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.container-fluid {
+  padding-bottom: 60px;
+}
+
+// .blank {
+//   margin: 0;
+// }
+
+.category {
+  padding: 0;
+  text-align: center;
+}
+
+.category-thead {
+  background-color: #CC9966;
+}
+
+.mypage {
+  text-align: center;
+  padding-top: 20px;
+  margin: 0 0 20px 0;
+  padding-bottom: 20px;
+}
+
+.mypage-background {
+  bacgroun-image: url("donut-1.jpg");
+  background-color:rgba(255,255,255,0.2);
+  background-blend-mode:lighten;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.mytable {
+  width: 100%;
+  margin: 0;
+  padding: 10px 50px;
+}
+
+.profile-item {
+  border-cpllapse: separate;
+  border-spacimg: 10px
+}
+
+.profile-link {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 20px 0;
+  padding-bottom: 20px;
+}
+
+.shipping-link, .order-link {
+  margin: 0;
+}
+
+.mypage-edit {
+  text-align: center;
+}
+
+.unsub-box {
+  padding: 50px;
+  text-align: center;
+}
+
+.wd-text {
+  line-height: 5px;
+}
+
+.mypage-link {
+  font-size: 30px;
+  color: #3CB371;
+}
+
+.wd-btn {
+  padding: 20px;
+}
+
+.edit-custpass {
+  text-align: center;
+}
+
+.custpass-title {
+  margin: 30px;
+}
+

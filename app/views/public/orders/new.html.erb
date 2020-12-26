@@ -1,0 +1,86 @@
+ <% if @order.errors.any? %>
+      <% @order.errors.full_messages.each do |message| %>
+         <div class="row">
+          <div class="mx-auto text-danger">
+        <%= message %>
+          </div>
+         </div>
+    <% end %>
+  <% end %>
+
+ <div class="container px-5 px-sm-0">
+   <div class="row">
+     <div class="mx-auto">
+       <h4>注文情報入力画面</h4>
+     </div>
+   </div>
+
+
+<%= form_with url: "/orders/confirm", local: true do |f|  %>
+<strong><%= f.label :payment, "支払方法" %></br></strong>
+  <div class="ml-4">
+     <%= f.radio_button :payment , "銀行振込", checked: "checked" %>銀行振込</br>
+  </div>
+<div class="ml-4">
+   <%= f.radio_button :payment , "クレジットカード" %>クレジットカード</br>
+</div>
+<strong><%= f.label :address_option, "お届け先" %></br></strong>
+ <div class="ml-4">
+   <%= f.radio_button :address_option, "0", checked: "checked" %>ご自身の住所</br>
+ </div>
+ <div class="ml-5">
+   〒<%= current_customer.zipcode %>
+    <%= current_customer.address %></br>
+    <%= current_customer.family_name + current_customer.first_name %></br>
+ </div>
+
+<div class="ml-4">
+   <%= f.radio_button :address_option, "1" %>登録先住所から選択</br>
+</div>
+<div class= "row">
+  <div class="col-9 ml-5 px-0">
+    <%= f.collection_select :address_id, current_customer.shippings.all, :id, :shipping_address, {}, class: 'form-control' %></br>    <%# 第一引数　パラムズの値、第二引数、参照する値、第三引数、送る値、第四引数、表示する値%>
+  </div>
+</div>
+<div class="ml-4">
+    <%= f.radio_button :address_option, "2" %>新しいお届け先</br> 
+</div>
+<div class= "row">
+  <div class="col-3 ml-5">
+    <%= f.label :zipcode, "郵便番号(ハイフン無し)" %>
+  </div>  
+  <div class="col-4 px-0">
+    <%= f.text_field :zipcode, class:"form-control", :placeholder => "(例)0000000" %></br>
+  </div>
+</div>
+<div class= "row">
+  <div class="col-3 ml-5">
+    <%= f.label :address, "住所" %>
+  </div>  
+  <div class="col-6 px-0">
+    <%= f.text_field :address, class:"form-control", :placeholder =>"(例)東京都渋⾕区代々⽊神園町0-0" %></br>
+  </div>
+</div>
+<div class= "row">
+  <div class="col-3 ml-5">
+    <%= f.label :name, "宛名" %>
+  </div>  
+  <div class="col-3 px-0">
+    <%= f.text_field :name, class:"form-control", :placeholder =>"(例)田中秀和" %></br>
+  </div>
+</div>
+  
+<div class= "row">
+  <div class="col-6 mx-auto mb-1">
+    <%= f.submit "確認画面へ進む", class:"btn btn-info btn-block" %>
+     <% end %>
+
+
+      <div class= "row">
+        <div class="col-6 mx-auto mb-1"> <!-- , style="padding-bottom: 80px -->
+          <p class="order-btn"><%= f.submit "確認画面へ進む", class:"btn btn-secondary btn-block" %></p>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,87 @@
+
+
+<header class="header">
+
+    <nav class="navbar navbar-expand-lg navbar-light ma-auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    
+
+
+    
+                <ul class="navbar-nav">
+                <!--会員がログインしたとき-->
+                <% if customer_signed_in? %>
+                <p class="fas fa-bell", style="color:#F5F5F5"> ようこそ、<strong><%= current_customer.family_name %> <%= current_customer.first_name %></strong> さん！</p>
+                <%= link_to root_path, class:"nav-link text-black" do %>
+                <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
+                <% end %>
+                <li class="nav-item">
+                    <%= link_to "マイページ", customer_path(current_customer), class: 'btn btn-outline-secondary fas fa-user nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "商品一覧", items_path, class: 'btn btn-outline-secondary fas fa-weight-hanging nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "カート", cart_items_path, class: 'btn btn-outline-secondary fas fa-shopping-cart nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "About", home_about_path, class: 'btn btn-outline-secondary fas fa-info nav-link text-white' %> 
+                </li>
+                <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-outline-danger fas fa-sign-out-alt nav-link text-white' %>
+                </li>
+
+                  
+
+
+                <!--管理人がログインしたとき-->
+                <% elsif admin_signed_in? %>
+                <%= link_to admin_path do %>
+                <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
+                <% end %>
+                <li class="nav-item">
+                    <%= link_to "商品一覧", admin_items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "会員一覧", admin_customers_path, class: 'btn fas fa-users nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "注文一覧", admin_orders_path, class: 'fas fa-store nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "カテゴリ一覧", admin_categories_path, class: 'fas fa-certificate nav-link text-white' %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-white' %>
+                </li>
+            
+                <!--検索フォームの呼び出し-->
+                <span>
+                <%= render "layouts/search" %>
+                </span>
+                <% else %>
+            
+                <!--会員も管理人もログインしてないとき-->
+                <%= link_to root_path do %>
+                <p class="logo-head ml-5"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
+                <% end %>
+                <li class="nav-item ml-5">
+                    <%= link_to "About", home_about_path, class: 'btn btn-outline-secondary fas fa-info nav-link text-white' %> 
+                </li>
+                <li class="nav-item ml-5">
+                    <%= link_to "商品一覧", items_path, class: 'btn btn-outline-secondary fas fa-weight-hanging nav-link text-white' %>
+                </li>
+                <li class="nav-item ml-5">
+                    <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-outline-secondary fas fa-user-plus nav-link text-white' %>
+                </li>
+                <li class="nav-item ml-5">
+                    <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-outline-secondary fas fa-sign-in-alt nav-link text-white' %>
+                </li>
+                <% end %>
+            </ul>
+            </div>
+    </nav>
+</header>
