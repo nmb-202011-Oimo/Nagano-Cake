@@ -12,7 +12,7 @@
    <div class="mx-auto">
      <h4>注文情報入力画面</h4>
    </div>
- </div>
+
 
 <%= form_with url: "/orders/confirm", local: true do |f|  %>
 <strong><%= f.label :payment, "支払方法" %></br></strong>
@@ -72,6 +72,6 @@
   <div class="col-6 mx-auto mb-1">
     <%= f.submit "確認画面へ進む", class:"btn btn-info btn-block" %>
      <% end %>
+
   </div>
-</div>
 </div>

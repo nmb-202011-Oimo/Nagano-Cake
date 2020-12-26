@@ -2,7 +2,7 @@ class Public::ShippingsController < ApplicationController
 
   def index
     @shipping = Shipping.new
-     @shippings = current_customer.shippings
+    @shippings = current_customer.shippings
   end
 
   def create

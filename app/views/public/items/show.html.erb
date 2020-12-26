@@ -19,6 +19,9 @@
          <%= @item.introduction %>
        </div>
       <div>
+        <%= @item.introduction %>
+      </div>
+      <div>
         <%# 商品価格(税込) ←多分税込価格の計算式は間違えてる%>
         <%= number_to_currency(@item.price * 1.1, strip_insignificant_zeros: true) %>
       </div>

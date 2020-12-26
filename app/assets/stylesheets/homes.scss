@@ -1,7 +1,10 @@
-// Place all the styles related to the public/homes controller here.
+// Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 .logo-head {
     width: 100%;
@@ -13,8 +16,8 @@
     display: inline-flex;
 }
 
-.text-ct {
-    color: #696969;
+.row {
+    width: 100%;
 }
 
 .item-random {
@@ -55,17 +58,6 @@
     padding: 0px;
 }
 
-// ↓aboutページのcss
-
-.about-title {
-    color: 	#000000;
-    font-size: 50px;
-    font-family: Libian SC;
-    text-shadow: 1px 2px 3px #808080;
-    padding-left: 20px;
-}
-
-
 .about {
     width: 100%;
     margin: 0;
@@ -91,4 +83,43 @@
     padding-left: 20px;
 }
 
+.naganocake {
+  width: 400px;
+  height: 300px;
+  margin: 20px auto;
+  background-image: image-url("shop.png");
+  background-size: 400px;
+  background-position: center; }
 
+.container h1 {
+  font-size: 30px;
+  text-align: center;
+  margin: 30px auto;
+  color: #75655d; }
+
+.container about-left {
+  text-align: left;
+}
+
+.shop {
+	width: 100px;
+	height: 100px;
+	margin: 20px auto;
+
+}
+
+.top-item-link {
+    padding: 20px;
+    margin-bottom: 80px;
+    right: 10px;
+}
+
+// .top-item-box {
+//     margin-bottom: 30px;
+// }
+
+// .item-random {
+//     padding-bottom: 80px;
+// }
+
+@meta

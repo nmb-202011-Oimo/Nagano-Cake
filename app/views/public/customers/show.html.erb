@@ -43,10 +43,10 @@
           <tfoot>
             <tr>
               <td class="profile-item">
-                  <%= link_to "登録情報を編集する", edit_customer_path(current_customer.id), class: "btn btn-outline-dark col-xs-10 col-xs-offset-1" %>
+                  <%= link_to "登録情報を編集する", edit_customer_path(current_customer.id), class: "btn btn-secondary col-xs-10 col-xs-offset-1" %>
               </td>
               <td class="profile-item">
-                  <%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-outline-dark col-xs-10 col-xs-offset-1" %>
+                  <%= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-secondary col-xs-10 col-xs-offset-1" %>
               </td>
             </tr>
           </tfoot>
@@ -56,11 +56,11 @@
             <p>配送先</p>
 
 
-            <p class="shipping-link"><%= link_to "配送先一覧へ", shippings_path, class: "btn btn-outline-dark col-xs-10 col-xs-offset-1" %></p>
+            <p class="shipping-link"><%= link_to "配送先一覧へ", shippings_path, class: "btn btn-secondary col-xs-10 col-xs-offset-1" %></p>
           </div>
           <div class="card profile-card bg-light">
             <p>注文履歴</p>
-            <p class="order-link"><%= link_to "注文履歴を見る", orders_path, class: "btn btn-outline-dark col-xs-10 col-xs-offset-1" %></p>
+            <p class="order-link"><%= link_to "注文履歴を見る", orders_path, class: "btn btn-secondary col-xs-10 col-xs-offset-1" %></p>
           </div>
         </div>
 

@@ -15,23 +15,25 @@
          ※会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
       </p>
+    <!--</div>-->
+    <!--<div class="top-item-box">-->
       <h3>
         オススメ商品
       </h3>
       <!-- each文 -->
       <div class="item-random">
         <% @random.each do |item| %>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <%= link_to item_path(item.id) do %>
               <p><%= attachment_image_tag item, :image, size:'180x180', format: 'jpg', fallback: "no_image.jpg" %></p>
-              <p><%= item.name %></p>
+              <p class="item-name"><%= item.name %></p>
             <% end %>
-            <p>￥ <%= item.price %></p>
+            <p class="item-price">￥ <%= item.price %></p>
           </div>
         <% end %>
       </div>
-      <div>
-        <%= link_to "もっと見る", items_path %>
+      <div class="top-item-link text-right">
+        <%= link_to "もっと見る", items_path, class: 'btn btn-secondary btn-block' %>
       </div>
     </div>
   </div>

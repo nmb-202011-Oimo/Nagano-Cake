@@ -29,7 +29,7 @@
   <tbody>
     <% @sum = 0 %>
     <% @cart_items.each do |cart_item| %> <%# <=現状@cart.itemsにはユーザの情報しか入れてないから、itemの情報が取れてるかはわかりません %>
-    
+
     <tr>
       <td><%= attachment_image_tag cart_item.item, :image, format: "jpg", size: "80x80", fallback: "no_image.jpg" %></td>
       <td><%= cart_item.item.name %></td>
@@ -37,7 +37,7 @@
        <%= form_with model: cart_item, local:true do |f| %>
        <%= f.hidden_field :item_id, :value => cart_item.item.id %>
        <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <td><%= f.number_field :quantity, value: cart_item.quantity %><%= f.submit "更新", class:"btn btn-info ml-2" %></td>
+      <td><%= f.number_field :quantity, value: cart_item.quantity %><%= f.submit "更新", class:"btn btn-secondary ml-2" %></td>
       <% end %>
 
       <td><%= number_to_currency(cart_item.subtotal_price, strip_insignificant_zeros: true) %></td>
@@ -53,7 +53,7 @@
 
  <div class="row">
      <div class="mx-auto">
-     <%= link_to "買い物を続ける", root_path, class:"btn btn-info" %>
+     <%= link_to "買い物を続ける", root_path, class:"btn btn-secondary" %>
      </div>
    <div class="col-4 mx-auto">
     <table class="table table-bordered">
@@ -69,7 +69,7 @@
    <div class="row">
      <div class="col-6 mx-auto mb-1">
         <% if @cart_items.present? %>
-      <%= link_to "情報入力画面へ進む", new_order_path, class:"btn btn-success btn-block" %>
+      <%= link_to "情報入力画面へ進む", new_order_path, class:"btn btn-secondary btn-block" %>
         <% end %>
     </div>
    </div>
