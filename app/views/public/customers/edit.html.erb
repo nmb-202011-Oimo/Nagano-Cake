@@ -6,7 +6,7 @@
 
         <!--%= render "devise/customers/shared/error_messages", resource: resource %>-->
 
-          <table class="table table-hover">
+          <table class="table table-hover" style="color:#696969;">
             <thead class="thead-light">
               <th colspan="5"></th>
             </thead>
@@ -101,7 +101,7 @@
         <% end %>
 
 
-      <div class="unsub-link">
+      <div class="unsub-link" style="padding-bottom:100px;">
         <%= link_to "退会画面", customer_unsubscribe_path(current_customer.id), class: "btn btn-danger" %>
       </div>
 
