@@ -4,6 +4,7 @@
       <%# カテゴリー検索画面の部分テンプレート%>
       <%= render "public/items/category", categories: @categories %>
     </div>
+
     <div class='col-lg-4 mt-5 text-center'>
       <%# 商品画像 %>
       <%= attachment_image_tag @item, :image, format: "jpg", size: "300x300", fallback: "no_image.jpg", class: "rounded mt-5" %>
@@ -25,6 +26,7 @@
           <th>
 
        <%# カート作成フォーム linktoの方がいいかな？？<=　itemインスタンスも必要か%>
+
         <%= form_with model: @cart_item, url:"/cart_items", local:true do |f| %>
           <% if customer_signed_in? %>
             <%# 今の商品とユーザーのIDをcreateアクションに渡してあげる%>
