@@ -27,8 +27,6 @@ DMMWEBCAMP２ヶ月目にあるチーム開発プロジェクトで作成したE
 ・gem 'devise-i18n'  
 ・gem 'devise-i18n-views'  
 
-https://infratop-dwc-team.slack.com/files/U01GAE2BBD3/F01H247RWAV/untitled_diagram__6_.pdf
-file:///Users/hrykmnw/Downloads/%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8A%E3%81%84%E3%82%82%E3%80%80application_design%20-%20routing%E5%AE%8C%E6%88%90.pdf
 
 ## 機能一覧
 
