@@ -16,7 +16,7 @@
                 <% if customer_signed_in? %>
                 <p class="fas fa-bell", style="color:#F5F5F5"> ようこそ、<strong><%= current_customer.family_name %> <%= current_customer.first_name %></strong> さん！</p>
                 <%= link_to root_path, class:"nav-link text-black" do %>
-                <p class="logo-head"><%= image_tag 'logo-4.png', :size => '150x75' %></p>
+                <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
                 <% end %>
                 <li class="nav-item">
                     <%= link_to "マイページ", customer_path(current_customer), class: 'btn btn-outline-secondary fas fa-user nav-link text-white' %>
@@ -40,7 +40,7 @@
                 <!--管理人がログインしたとき-->
                 <% elsif admin_signed_in? %>
                 <%= link_to admin_path do %>
-                <p class="logo-head"><%= image_tag 'logo-4.png', :size => '150x75' %></p>
+                <p class="logo-head"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
                 <% end %>
                 <li class="nav-item">
                     <%= link_to "商品一覧", admin_items_path, class: 'fas fa-weight-hanging nav-link text-white' %>
@@ -66,7 +66,7 @@
             
                 <!--会員も管理人もログインしてないとき-->
                 <%= link_to root_path do %>
-                <p class="logo-head ml-5"><%= image_tag 'logo-4.png', :size => '150x75' %></p>
+                <p class="logo-head ml-5"><%= image_tag 'logo-2.png', :size => '150x75' %></p>
                 <% end %>
                 <li class="nav-item ml-5">
                     <%= link_to "About", home_about_path, class: 'btn btn-outline-secondary fas fa-info nav-link text-white' %> 

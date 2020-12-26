@@ -47,6 +47,7 @@ header {
 }
 
 #notice {
+  margin: 0;
   padding-left: 50px;
   font-size: 20px;
   color: green;
@@ -75,7 +76,6 @@ body {
 }
 
 footer{
-
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
   width: 100%;
@@ -84,7 +84,7 @@ footer{
   text-align: center;
   margin-top: auto;
   margin-bottom: 0;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
 .navbar {
@@ -114,6 +114,15 @@ footer{
 .category {
   padding: 0;
   text-align: center;
+}
+
+.category-thead {
+  color: #8B4513;
+  background-color: #FFF8DC;
+}
+
+.text-ct {
+    color: #B8860B;
 }
 
 .mypage {
@@ -182,3 +191,4 @@ footer{
 .custpass-title {
   margin: 30px;
 }
+
