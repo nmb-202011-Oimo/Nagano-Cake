@@ -47,15 +47,20 @@ class Public::OrdersController < ApplicationController
          return
      end
      current_customer.cart_items.destroy_all
+     
      shipping = current_customer.shippings
      newshipping = shipping.find_by(zipcode: @order.zipcode)
-     if newshipping == nil
+     if current_customer.zipcode == @order.zipcode
+        redirect_to complete_order_path(@order.id)
+     elsif current_customer.zipcode != @order.zipcode
+       if newshipping == nil
        shipping = Shipping.new(customer_id: current_customer.id, name: @order.name, zipcode: @order.zipcode, address: @order.address)
        shipping.save
        flash[:notice] = "住所が新規登録されました"
        redirect_to complete_order_path(@order.id)
-     else
+       else
       redirect_to complete_order_path(@order.id)
+       end
      end
    end
    
