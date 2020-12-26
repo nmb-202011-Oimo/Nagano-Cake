@@ -54,7 +54,7 @@ DMMWEBCAMP２ヶ月目にあるチーム開発プロジェクトで作成したE
 ## チームおいも メンバー
 
 お担当　おと  [@corogit](https://github.com/corogit)  
-い担当　いと  @74905  
-も担当　MinO @mnwhryk  
+い担当　いと  [@74905](https://github.com/74905)  
+も担当　MinO [@mnwhryk](https://github.com/mnwhryk)  
 　
 
